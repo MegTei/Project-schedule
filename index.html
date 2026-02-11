@@ -1,0 +1,2510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="AO Materials Program Dashboard - Responsible Materials Research & Implementation Timeline">
+    <meta name="author" content="AO Materials Team">
+    <title>AO Precinct Target Responsible Materials - Project Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --header-navy: #1E2886;
+            --primary: #0288CC;
+            --primary-dark: #0271ad;
+            --highlight: #00E3FF;
+            --highlight-dark: #00c4db;
+            --orange: #fb923c;
+            --orange-dark: #f97316;
+            --green: #10b981;
+            --green-dark: #059669;
+            --green-bright: #10b981;
+            --purple: #a78bfa;
+            --purple-dark: #8b5cf6;
+            --teal: #0288CC;
+            --teal-dark: #0271ad;
+            --pink: #f472b6;
+            --pink-dark: #ec4899;
+            --red: #f87171;
+            --red-dark: #ef4444;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --grey-light: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: var(--text);
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .main-container {
+            max-width: 2200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            background: #f8fafc;
+            border-radius: 0;
+            padding: 0;
+            margin-bottom: 30px;
+            box-shadow: none;
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .tab-button {
+            padding: 16px 32px;
+            border: none;
+            background: transparent;
+            color: #1E2886;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 0;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            background: #f1f5f9;
+        }
+
+        .tab-button.active {
+            background: #0288CC;
+            color: white;
+            border-bottom: 3px solid #00E3FF;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .container {
+            min-width: 1800px;
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .header-left h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1E2886;
+            margin-bottom: 6px;
+        }
+
+        .header-left .subtitle {
+            font-size: 0.95rem;
+            color: #0288CC;
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .date-badge {
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            background: var(--green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Gantt Chart Styles */
+        .gantt-container {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+
+        .gantt-chart {
+            display: grid;
+            grid-template-columns: 380px 50px 100px 80px repeat(12, 150px);
+            min-width: 2530px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .timeline-header {
+            display: contents;
+        }
+
+        .week-header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 16px 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.3;
+        }
+
+        .week-header:first-child {
+            text-align: left;
+            padding-left: 24px;
+        }
+
+        .phase-row {
+            display: contents;
+        }
+
+        .phase-header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 12px 24px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-top: 2px solid var(--border);
+        }
+
+        .task-row {
+            display: contents;
+        }
+
+        .task-cell {
+            padding: 12px 20px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Blue border for completed tasks */
+        .task-row:has(.status-done) .task-cell {
+            border-left: 4px solid #1E2886;
+        }
+
+        .lead-cell {
+            padding: 12px 12px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: white;
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .contrib-cell {
+            padding: 12px 12px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: white;
+            display: flex;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
+
+        .task-row:nth-child(even) .task-cell,
+        .task-row:nth-child(even) .lead-cell,
+        .task-row:nth-child(even) .contrib-cell,
+        .task-row:nth-child(even) .timeline-cell {
+            background: #f8fafc;
+        }
+
+        .task-name {
+            font-size: 0.875rem;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .key-task .task-name::before {
+            content: '★';
+            color: var(--orange);
+            margin-right: 6px;
+            font-size: 1rem;
+        }
+
+        .timeline-cell {
+            padding: 10px 6px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .span-2 {
+            grid-column: span 2;
+        }
+
+        .span-3 {
+            grid-column: span 3;
+        }
+
+        .bar {
+            height: 30px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+            padding: 0 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .bar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .bar.phase1 {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .bar.phase2 {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+        }
+
+        .bar.phase3 {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+        }
+
+        .bar.phase4 {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+        }
+
+        .bar.phase5 {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+        }
+
+        .bar.phase6 {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .bar.phase7 {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+        }
+
+        .bar.phase-grey {
+            background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+        }
+
+        .bar.milestone {
+            background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+            clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+            width: 95%;
+        }
+
+        .legend {
+            display: flex;
+            gap: 24px;
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--bg);
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .legend-box {
+            width: 28px;
+            height: 18px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .notes {
+            margin-top: 35px;
+            padding: 25px;
+            background: #fffbeb;
+            border-left: 4px solid var(--orange);
+            border-radius: 8px;
+        }
+
+        .notes h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 12px;
+        }
+
+        .note-item {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .note-label {
+            font-weight: 600;
+            color: var(--orange-dark);
+        }
+
+        .status-cell {
+            padding: 8px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--border);
+            background: var(--card);
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .status-in-progress {
+            color: #10b981;
+            font-size: 0.47rem;
+            letter-spacing: 0.2px;
+        }
+
+        .status-done {
+            color: #64748b;
+            font-size: 0.47rem;
+            letter-spacing: 0.2px;
+        }
+
+        .task-row.in-progress .bar {
+            opacity: 0.6;
+        }
+
+        /* Risk Dashboard Styles */
+        .summary-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .summary-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .summary-stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #10b981;
+            line-height: 1;
+        }
+
+        .summary-stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .critical-stat .summary-stat-value {
+            color: #fb923c;
+        }
+
+        .controls {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .controls-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            background: #f8fafc;
+        }
+
+        .filter-btn.active {
+            background: #0288CC;
+            color: white;
+            border-color: #0288CC;
+        }
+
+        .key-indicators {
+            display: flex;
+            gap: 1.5rem;
+            margin-left: auto;
+            padding-left: 1.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .key-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .key-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .key-value {
+            font-size: 0.9rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .risks-table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .risks-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .risks-table thead {
+            background: linear-gradient(135deg, #0288CC 0%, #0271ad 100%);
+            color: white;
+        }
+
+        .risks-table th {
+            padding: 1rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .risks-table th:first-child {
+            width: 5%;
+            text-align: center;
+        }
+
+        .risks-table th:nth-child(2) {
+            width: 17%;
+        }
+
+        .risks-table th:nth-child(3) {
+            width: 17%;
+        }
+
+        .risks-table th:nth-child(4) {
+            width: 10%;
+            text-align: center;
+        }
+
+        .risks-table th:last-child {
+            width: 51%;
+        }
+
+        .risks-table tbody tr {
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.2s;
+        }
+
+        .risks-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .risks-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .risks-table td {
+            padding: 1rem 1rem;
+            vertical-align: top;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #475569;
+        }
+
+        .risk-desc-cell {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 0.9rem;
+        }
+
+        .risk-num-cell {
+            text-align: center;
+            font-weight: 700;
+            color: #0288CC;
+            font-size: 0.9rem;
+        }
+
+        .risk-level-cell {
+            text-align: center;
+        }
+
+        .risk-level-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .risk-level-25 {
+            background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+        }
+
+        .risk-level-16 {
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+        }
+
+        .risk-level-15 {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+
+        .risk-level-low {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+
+        .mitigation-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mitigation-list li {
+            padding: 0.3rem 0;
+            position: relative;
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        .mitigation-sub-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.3rem 0 0 0;
+            padding-left: 1rem;
+        }
+
+        .mitigation-sub-list li {
+            padding: 0.2rem 0;
+            position: relative;
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .summary-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .key-indicators {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+                border-top: 2px solid #e2e8f0;
+                padding-top: 1rem;
+                margin-top: 1rem;
+            }
+
+            .risks-table-container {
+                overflow-x: auto;
+            }
+
+            .risks-table {
+                min-width: 800px;
+            }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .tab-navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Top Banner Header -->
+        <div style="background: linear-gradient(135deg, #1E2886 0%, #2d3b9e 100%); padding: 40px 60px; margin: -30px -30px 30px -30px; border-radius: 16px 16px 0 0;">
+            <h1 style="color: white; font-size: 2.5rem; font-weight: 700; margin: 0 0 8px 0; text-align: center;">AO Materials Program Dashboard</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin: 0; text-align: center; font-weight: 400;">Responsible Materials Research & Implementation | February 2026</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="switchTab('schedule')">Project Schedule</button>
+            <button class="tab-button" onclick="switchTab('risks')">Risk Register</button>
+        </div>
+
+        <!-- Schedule Tab -->
+        <div id="schedule-tab" class="tab-content active">
+            <div class="container">
+                <div class="header">
+                    <div class="header-left">
+                        <h1>AO Precinct Target Responsible Materials Project Schedule</h1>
+                        <p class="subtitle">Research & Implementation Timeline (Feb - Apr 2026)</p>
+                    </div>
+                </div>
+
+                <!-- Project Summary Section -->
+                <div style="background: white; border-radius: 12px; padding: 24px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+                    <div style="margin-bottom: 24px;">
+                        <div style="font-weight: 700; color: var(--text); font-size: 1.1rem; margin-bottom: 12px;">Summary</div>
+                        <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-left: 4px solid #0288CC; padding: 16px 20px; border-radius: 8px;">
+                            <div style="color: var(--text); line-height: 1.6; font-size: 0.95rem;">
+                                <div style="margin-bottom: 0.75rem;"><strong style="color: #0271ad;">Scope:</strong> Current state materials will be benchmarked and mapped to a shortlist of potential closed-loop sustainable alternatives that are fit for-purpose for Precinct Long term design specific elements.</div>
+                                <div style="color: #334155;">The comparative business case will be modelled with recommendations to include in the RFP requirements</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                        <!-- Key Updates -->
+                        <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border: 2px solid #0288CC; border-radius: 12px; padding: 18px; box-shadow: 0 2px 6px rgba(2, 136, 204, 0.15);">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #0288CC;">
+                                <div style="background: #0288CC; color: white; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">i</div>
+                                <div style="font-weight: 700; color: #0271ad; font-size: 0.9rem; letter-spacing: 0.3px;">KEY UPDATES</div>
+                            </div>
+                            <div style="color: #334155; line-height: 1.5; font-size: 0.875rem;">
+                                <div style="margin-bottom: 6px; padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #0288CC; font-weight: 600;">•</span>
+                                    Current state materials benchmarking - 5 agencies and builders (Meg)
+                                </div>
+                                <div style="margin-bottom: 6px; padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #0288CC; font-weight: 600;">•</span>
+                                    Responsible materials research under way (Andrea)
+                                </div>
+                                <div style="margin-bottom: 6px; padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #0288CC; font-weight: 600;">•</span>
+                                    JTDodd have a modular system to be tested F1
+                                </div>
+                                <div style="padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #0288CC; font-weight: 600;">•</span>
+                                    Target materials project/ scope - approval - TBC
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Key Meetings -->
+                        <div style="background: #EAEAEA; border: 2px solid #9ca3af; border-radius: 12px; padding: 18px; box-shadow: 0 2px 6px rgba(156, 163, 175, 0.15);">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #9ca3af;">
+                                <div style="background: #6b7280; color: white; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">◆</div>
+                                <div style="font-weight: 700; color: #374151; font-size: 0.9rem; letter-spacing: 0.3px;">KEY MEETINGS NEXT WEEK</div>
+                            </div>
+                            <div style="color: #334155; line-height: 1.5; font-size: 0.875rem;">
+                                <div style="margin-bottom: 6px; padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6b7280; font-weight: 600;">•</span>
+                                    Design sync: outline evergreen elements and showcase modular system (JTDodd)
+                                </div>
+                                <div style="margin-bottom: 6px; padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6b7280; font-weight: 600;">•</span>
+                                    Procurement (Sam) regroup
+                                </div>
+                                <div style="margin-bottom: 6px; padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6b7280; font-weight: 600;">•</span>
+                                    Current state materials benchmarking agencies/ builders (Meg)
+                                </div>
+                                <div style="margin-bottom: 6px; padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6b7280; font-weight: 600;">•</span>
+                                    Resource recovery research (Meg)
+                                </div>
+                                <div style="padding-left: 12px; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6b7280; font-weight: 600;">•</span>
+                                    Responsible materials (Andrea)
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Blockers -->
+                        <div style="background: #FFFFC9; border: 2px solid #fbbf24; border-radius: 12px; padding: 18px; box-shadow: 0 2px 6px rgba(251, 191, 36, 0.15);">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #fbbf24;">
+                                <div style="background: #fbbf24; color: white; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">!</div>
+                                <div style="font-weight: 700; color: #92400e; font-size: 0.9rem; letter-spacing: 0.3px;">BLOCKERS</div>
+                            </div>
+                            <div style="color: #334155; line-height: 1.5; font-size: 0.875rem;">
+                                <div style="text-align: center; padding: 20px; color: #92400e; font-weight: 600; font-size: 0.95rem; background: rgba(255, 255, 255, 0.5); border-radius: 8px;">
+                                    <div style="font-size: 1.5rem; margin-bottom: 4px;">✓</div>
+                                    None at this time
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gantt-container">
+                    <div class="gantt-chart">
+                        <!-- Headers -->
+                        <div class="timeline-header">
+                            <div class="week-header">Task / Activity</div>
+                            <div class="week-header">Lead</div>
+                            <div class="week-header">Contributors</div>
+                            <div class="week-header">Status</div>
+                            <div class="week-header">Week 0<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">2-Feb</span></div>
+                            <div class="week-header">Week 1<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">9-Feb</span></div>
+                            <div class="week-header">Week 2<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">16-Feb</span></div>
+                            <div class="week-header">Week 3<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">23-Feb</span></div>
+                            <div class="week-header">Week 4<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">2-Mar</span></div>
+                            <div class="week-header">Week 5<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">9-Mar</span></div>
+                            <div class="week-header">Week 6<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">16-Mar</span></div>
+                            <div class="week-header">Week 7<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">23-Mar</span></div>
+                            <div class="week-header">Week 8<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">13-Apr</span></div>
+                            <div class="week-header">Week 9<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">20-Apr</span></div>
+                            <div class="week-header">Week 10+<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">27-Apr+</span></div>
+                            <div class="week-header">Post AO27</div>
+                        </div>
+
+                        <!-- PHASE 0: Responsible Materials RFP Integration Scope & Approval -->
+                        <div class="phase-row">
+                            <div class="phase-header">PHASE 0: Responsible Materials RFP Integration Scope & Approval</div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Select target materials (volume & impact)</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase1">Material scoping</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Precinct Design & Build Sync: target materials and structural systems</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">PK, Peter, Sam, Vange, Matt</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase1">Alignment</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Research brief and matrix</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Andrea</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase1">Research brief</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Sponsor approval for scope, time, expert</div>
+                            </div>
+                            <div class="lead-cell">Matt</div>
+                            <div class="contrib-cell">Matt, Peter, PK</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase1">Approval</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <!-- PHASE 1: Market research - materials -->
+                        <div class="phase-row">
+                            <div class="phase-header">PHASE 1: Market research - materials</div>
+                        </div>
+
+                        <!-- 1.1 Establish current state (Baseline Data) -->
+                        <div class="phase-row">
+                            <div class="phase-header">1.1 Establish current state (Baseline Data)</div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Precinct EOI review</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Sam</div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Precinct EOI</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Builder consultation: Made experiences</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Made (Daniel Baron)</div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">09/02 Made</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Builder consultation: JT Dodd - modular design brief</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">JT Dodd (Josh)</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">10/02 JTDodd</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Builder consultation: Bestoh - done</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Bestoh (Tom Hunter)</div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">11/02 Bestoh</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Agency consultation: SeekR - done</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">SeekR (Bon)</div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">11/06 Seekr </div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Builder consultation: Greenspec</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Greenspec (Barry)</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Greenspec</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Agency consultation/ Volume mapping: Taboo</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Taboo (Reece/ Sam)</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Taboo </div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Builder consultation/ Volume mapping: Chopt</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Chopt (need contact)</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Chopt</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Agency consultation/ Volume mapping: IVE</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Ive (David)</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">IVE </div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Agency consultation: Lee Bros</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Lee Bros (Nick)</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Lee Bros follow-up</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">TA consultation: AO Reserve</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Arron</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">AO Reserve specs</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">TA consultation: Fire Safety</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">John Robinson</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">TA Fire Safety</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Traditional material price benchmarking (AO25)</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Sam, Andrea</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Cost baseline</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Disposal costs - trending over time + AO26</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Waste (IKON) costs</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Design Sync: Evergreen design elements structural application reqs</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Peter,  Vange, PK, Matt, John Robinson</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase2">Material specs</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">MILESTONE: deliverable - current state materials benchmarking</div>
+                            </div>
+                            <div class="lead-cell"></div>
+                            <div class="contrib-cell"></div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar milestone">Milestone: Benchmark</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <!-- 1.2 Responsible Materials -->
+                        <div class="phase-row">
+                            <div class="phase-header">1.2 Responsible Materials - product research, certifications & circularity</div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Australian supplier research</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell"></div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-3">
+                                <div class="bar phase3">Supplier mapping</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Material research & data collection: Certifications</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Andrea</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-3">
+                                <div class="bar phase3">Certification review</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Material research & data collection: Specifications and supply</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Andrea</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase3">Spec compilation</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Resource Recovery test - IKON/ downstream partners</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt/ M&OP/ Ikon/ Redirect</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase3">Circularity test</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Resource Recovery test - downstream market partners up to 10</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Andrea</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase3">up to 10 market partners</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Independent consultant product validation & specifications & supply</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">External Consultant (TBC)</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase3">Product validation</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Independent consultant assess materials fit-for-application precinct brief</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">External Consultant (TBC)</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase3">Fit precinct brief</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">AO Fire/ safety materials review & endorsement</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">John Robinson</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase3">Safety approval</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Design Sync: Evergreen design elements in RFP</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Peter,  Vange, PK, Matt, John Robinson</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase3">Alignment/ approval</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">MILESTONE: deliverable - responsible materials shortlist</div>
+                            </div>
+                            <div class="lead-cell"></div>
+                            <div class="contrib-cell"></div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar milestone">Milestone</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <!-- 1.3 Consultation -->
+                        <div class="phase-row">
+                            <div class="phase-header">1.3 Consultation:  Agency & TA Materials feasibility</div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Agency/ builder consultation on materials during RFP</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Peter, Gemma, Liam, Vange, Ash</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase4">Agency feedback</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">TA consultation on materials during RFP</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">PK, Vange, Arron, John</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase4">TA feedback</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Consider adoption levers (auditing, reporting, education, support)</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Sam, John, Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase4">Reporting &  auditing</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Materials shortlist iteration</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Sam, Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase4">Revised shortlist</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <!-- PHASE 2: Preferred materials pricing -->
+                        <div class="phase-row">
+                            <div class="phase-header">PHASE 2: Preferred materials pricing </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">AO procurement  (quotes)</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Sam</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">Quote requests</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">AO procurement pricing and preferred suppliers<br>Q Is there a preferred supplier framework required?</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Sam</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">Pricing analysis</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">RFP expectations (Waste mgt plan, asset tracking, preferred suppliers, auditing, reporting)</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt, Sam</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase5">RFP content draft</div>
+                            </div>
+                            <div class="timeline-cell">
+                                <div class="bar phase5">Agency materials</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Decision Gate: Finance & procurement team consultation to feed into <br>- Agency RFP shortlist </div>
+                            </div>
+                            <div class="lead-cell">Matt</div>
+                            <div class="contrib-cell">Finance/ procurement stakeholders</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase5">Alignment/ approval</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">MILESTONE: Preferred material suppliers  pricing</div>
+                            </div>
+                            <div class="lead-cell">Sam</div>
+                            <div class="contrib-cell">Meg, Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar milestone">Milestone:  Preferred  suppliers  </div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <!-- PHASE 3: Business Case Development -->
+                        <div class="phase-row">
+                            <div class="phase-header">PHASE 3: Business Case Development</div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Warehouse capacity and costs (TBC)</div>
+                            </div>
+                            <div class="lead-cell">Meg/ Matt</div>
+                            <div class="contrib-cell">Jo/ Emma/ Finance</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">Warehouse capacity</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">AO26 waste insights (IKON)</div>
+                            </div>
+                            <div class="lead-cell">Matt</div>
+                            <div class="contrib-cell">M&OP</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">IKON</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">AO Reserve use case</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Arron</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase6">AO Reserve proof point</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">TCO analysis, storage/ warehouse capacity, cost modelling & ROSI</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Finance Team</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">TCO framework</div>
+                            </div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">Financial modelling</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Business case narrative<br>+ Social license to operate</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">Problem/opportunity</div>
+                            </div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">Solution/numbers</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Design Sync: Draft business case for review</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Peter,  Vange, PK, Matt, John Robinson</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">Alignment/ approval</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">MILESTONE: deliverable - business case</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar milestone">Milestone: Business case</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <!-- 3.1 RFP INCLUDES TARGET MATERIALS -->
+                        <div class="phase-row">
+                            <div class="phase-header"><strong>3.1 RFP INCLUDES TARGET MATERIALS</strong></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell key-task">
+                                <div class="task-name">Materials clause for RFP draft presentation to TA teams</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Peter, PK, Vange, John Robinson, Sam, Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase6">Materials spec for RFP shortlist </div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">MILESTONE: Materials RFP update/ finalisation</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar milestone">Milestone: Final materials spec</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                        <!-- PHASE 4: Adoption -->
+                        <div class="phase-row">
+                            <div class="phase-header">PHASE 4: Adoption: Agency/ builder support & education (TBC)</div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Ecosystem engagement (agencies/ builders/ designers)<br>Living feasibility study</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell"> </div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase-grey">TBC</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase-grey">TBC</div>
+                            </div>
+                        </div>
+
+                        <!-- PHASE 5: Post-AO27 -->
+                        <div class="phase-row">
+                            <div class="phase-header">PHASE 5: Post-AO27 Material Feasibility Review</div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Measure program effectiveness and adoption</div>
+                            </div>
+                            <div class="lead-cell"></div>
+                            <div class="contrib-cell"></div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase-grey">Measure effectiveness</div>
+                            </div>
+                        </div>
+
+                        <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Post-event review & iteration - TBC</div>
+                            </div>
+                            <div class="lead-cell"></div>
+                            <div class="contrib-cell"></div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--text); font-size: 1.1rem; font-weight: 600;">Legend</h3>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);"></div>
+                        <span>Phase 0: Scope</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);"></div>
+                        <span>Phase 1: Baseline</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);"></div>
+                        <span>Phase 2: Preferred materials</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);"></div>
+                        <span>Phase 3: Business Case</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);"></div>
+                        <span>Phase 4: Adoption</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);"></div>
+                        <span>Phase 5: Review</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);"></div>
+                        <span>Milestone</span>
+                    </div>
+                    <div class="legend-item">
+                        <span>★ = Key Task</span>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="notes">
+                    <h3>📌 Project Critical Information</h3>
+                    <div class="notes-grid">
+                        <div class="note-item">
+                            <span class="note-label">Project Lead:</span> Meg (4-5 days/week for 5-6 weeks)
+                        </div>
+                        <div class="note-item">
+                            <span class="note-label">Sponsor:</span> Matt (Director of Sustainability)
+                        </div>
+                        <div class="note-item">
+                            <span class="note-label">Independent Expert:</span> 2-3 weeks elapsed time - Budget TBC
+                        </div>
+                        <div class="note-item">
+                            <span class="note-label">Key Stakeholders:</span> Matt, Peter, PK, Vange, Andrea, Sam, John Robinson
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risks Tab -->
+        <div id="risks-tab" class="tab-content">
+            <div class="container" style="min-width: auto;">
+                <div class="header">
+                    <div class="header-left">
+                        <h1>TA Circular Program - Responsible Materials</h1>
+                        <p class="subtitle">Risk Register Dashboard</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="date-badge">Last Updated: 9 February 2026</div>
+                    </div>
+                </div>
+
+                <div class="summary-section">
+                    <div class="summary-stat">
+                        <div class="summary-stat-value">13</div>
+                        <div class="summary-stat-label">Total Risks</div>
+                    </div>
+                    <div class="summary-stat critical-stat">
+                        <div class="summary-stat-value">10</div>
+                        <div class="summary-stat-label">Critical Priority</div>
+                    </div>
+                </div>
+
+                <!-- What is Known / Unknown Section -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.5rem;">
+                    <!-- What is Known -->
+                    <div style="background: white; border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); border-left: 4px solid #10b981;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <div style="background: #10b981; color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;">✓</div>
+                            <h3 style="font-size: 1.1rem; font-weight: 700; color: #059669; margin: 0;">What is known</h3>
+                        </div>
+                        <div style="color: #334155; line-height: 1.4; font-size: 0.9rem;">
+                            <div style="margin-bottom: 6px; padding-left: 16px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">i)</span>
+                                <strong>Budget & cost resistance:</strong> feedback reflects that responsible alternatives have not been supported due to budgets
+                            </div>
+                            <div style="margin-bottom: 6px; padding-left: 16px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">ii)</span>
+                                <strong>Effort & time constraints:</strong> Circular design requires more resources and time than 'build & bin' approach. Limited bump out timeframe is a hard constraint to take the time to disassemble
+                            </div>
+                            <div style="padding-left: 16px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">iii)</span>
+                                <strong>Stakeholder alignment gap:</strong> Disconnect between partners, agencies, designers and builders, with few including materials recovery in designs and limited communication of target materials requirements
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What is Unknown -->
+                    <div style="background: white; border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); border-left: 4px solid #fb923c;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <div style="background: #fb923c; color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;">?</div>
+                            <h3 style="font-size: 1.1rem; font-weight: 700; color: #ea580c; margin: 0;">What is unknown</h3>
+                        </div>
+                        <div style="color: #334155; line-height: 1.4; font-size: 0.9rem;">
+                            <p style="margin-bottom: 10px;">At this outset the adoption approach is not clear.</p>
+                            <div style="margin-bottom: 6px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #fb923c; font-weight: 700;">Q</span>
+                                Will the materials recommendations be optional
+                            </div>
+                            <div style="margin-bottom: 6px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #fb923c; font-weight: 700;">Q</span>
+                                How will agencies/ builders report they have used a material for long-term design element
+                            </div>
+                            <div style="padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #fb923c; font-weight: 700;">Q</span>
+                                How will TA source segregate for a closed-loop
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="controls-row">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by Priority:</span>
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="25">Critical (25)</button>
+                            <button class="filter-btn" data-filter="16">High (16)</button>
+                            <button class="filter-btn" data-filter="15">Medium (15)</button>
+                        </div>
+                        <div class="key-indicators">
+                            <div class="key-item">
+                                <div class="key-label">Impact</div>
+                                <div class="key-value">1-5</div>
+                            </div>
+                            <div class="key-item">
+                                <div class="key-label">Probability</div>
+                                <div class="key-value">1-5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="risks-list" id="risksList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Risk Dashboard JavaScript
+        const risks = [
+            {
+                "id": 1,
+                "description": "Budget: Partners/agencies/TA did not have budget approval for circular materials/practices in AO26",
+                "raised_by": "Agencies/ Builders",
+                "impact_description": "Circular program fails to shift precinct builds from 'build & bin' to circular at scale",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "1.1 Apply a very targeted high-ROSI materials approach:\ni) specific applications e.g. facades\nii) specific materials e.g. multi year ROI\niii) specific precincts - align with Peter\n\n1.2 Align with Long term design - establish which elements will be part of the annual vs evergreen scope.\n1.3 Precinct RFP needs the primary mechanism - procurement policy & contracts to enable adoption. It is the enabler for compliance",
+                "viability": "Ref what is unknown\nRequire direction from Peter evergreen elements\nNeed to understand the extent of the recommendation vs requirement in the precinct RFP"
+            },
+            {
+                "id": 2,
+                "description": "Effort & cost: Circular design/reuse not easier/cheaper than annual 'build & bin'",
+                "raised_by": "Builders & contractors",
+                "impact_description": "Qualitative feedback from AO25/ AO26 raised the lack of incentives fund resourcing and skills to adopt circular practices",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "This is true for some applications and not others.\nEvaluate the evergreen structural and surface systems that are most viable and model ROSI\n\nProvide proof points\ni) AO Reserve living use case\nii) JTDodd wall track system at F1\niii) Run 3-5 feasibility studies to track costs. With financial systems limitations tracking will be manual",
+                "viability": "High level assessment is possible in the project, feasibility will need to be tested over a period of time\nPart of business case modelling"
+            },
+            {
+                "id": 3,
+                "description": "Bump-out time doubles for disassembly/reuse/storage",
+                "raised_by": "Builders & contractors",
+                "impact_description": "Disrupts event schedule & contractor ops, blocks reuse at scale",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "Be highly selective around what evergreen structural elements are fit for purpose for:\ni) reuse or\nii) recovery\niii) Test time increase vs labour tradeoff w/ builders/TA",
+                "viability": "Related to 1.1\nConsultation with a range of builders & TA"
+            },
+            {
+                "id": 4,
+                "description": "Disconnect: Partners/agencies/designers don't embed circular reqs for builders",
+                "raised_by": "Agencies/ Builders/ TA fire safety",
+                "impact_description": "Builders can't deliver circular outcomes; recovery targets missed",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "1. Extend education/contracts to partners/designers\n2. Engage the commercial team for partner requirements/ support",
+                "viability": "Currently out of Program scope\nMatt + commercial team"
+            },
+            {
+                "id": 5,
+                "description": "Partners/ agencies/ builders prefer to use mixed construction waste bins on site because they are 'free'",
+                "raised_by": "Agencies/ Builders",
+                "impact_description": "While waste services are free to use, there is no reason for partners/ agencies/ builders to pay additional service and storage fees to manage own their waste",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "Consider:\n1) Waste management plans from partners/ agencies in collab with builders\n2) Distribute waste costs for anyone who doesn't provide a plan\n3) Model what the distribution of costs would be across partners/ agencies",
+                "viability": "Very viable if supported by TA systems"
+            },
+            {
+                "id": 6,
+                "description": "Weather/traffic-degraded materials can't be reused",
+                "raised_by": "Builders & contractors",
+                "impact_description": "Flooring and low cost hoardings which are finished/ adhesed to other materials are not good reuse candidates",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "Be highly selective around what structural elements are fit for purpose for:\ni) reuse or\nii) recovery\niii) consider if flooring should be in scope",
+                "viability": "Related to 1.1"
+            },
+            {
+                "id": 7,
+                "description": "Source segregation of target materials will need to be supported",
+                "raised_by": "TA",
+                "impact_description": "There are complexities in mandating use of certain materials and being able to:\ni) identify them on bump out to segregate and\nii) incorporate into the site waste management planning",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "Review the AO26 timber source segregation learnings",
+                "viability": ""
+            },
+            {
+                "id": 8,
+                "description": "Measuring compliance of target materials will depend on how they are supported (adopted) and reported by agencies/ builders",
+                "raised_by": "TA",
+                "impact_description": "Requires planning and inclusion in both RFP and for TA PMs",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "TA fire/ safety existing process could be leveraged, this will require review and input from TA",
+                "viability": "Needs review with TA Fire/ safety"
+            },
+            {
+                "id": 9,
+                "description": "Communication of the target materials phase is essential for its success",
+                "raised_by": "TA/ Agencies/ Builders/ TA fire safety",
+                "impact_description": "Stakeholders will need to receive comms around shift in zone of focus to build on awareness and support adoption",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "Communication: expand to Partners, designers and builders\n- Content, briefing sessions and support TBC\nUpdate the CDG and RML and distribute broadly",
+                "viability": "TBC scope\nCircular program"
+            },
+            {
+                "id": 10,
+                "description": "Optimal material/application mix requires a continuous feasibility study",
+                "raised_by": "All",
+                "impact_description": "This requires upfront acknowledgement and buy-in from TA management, design and exec",
+                "impact_level": 5,
+                "probability_level": 5,
+                "priority_level": 25,
+                "mitigation_strategies": "Set Phase III measures of success\nBe clear on the expectations up front",
+                "viability": "Sponsor together with key teams"
+            },
+            {
+                "id": 11,
+                "description": "Transparency of outcomes without systems",
+                "raised_by": "All",
+                "impact_description": "Cannot credibly report circular performance or data-drive decisions",
+                "impact_level": 5,
+                "probability_level": 3,
+                "priority_level": 15,
+                "mitigation_strategies": "Dependent on measures of success and 1.1 Program approach - establish what needs to be measured, by who and how",
+                "viability": "Delivery: Collab with various TA teams"
+            },
+            {
+                "id": 12,
+                "description": "Responsible material supply is dependant on seasonality and sensitive to supply chain shocks",
+                "raised_by": "All",
+                "impact_description": "Supply scale and lead times need to be known before encouraging the ecosystem to use the responsible materials",
+                "impact_level": 4,
+                "probability_level": 4,
+                "priority_level": 16,
+                "mitigation_strategies": "Related to 1.1 + procurement agreements verify scale/availability/performance",
+                "viability": "Procurement terms"
+            },
+            {
+                "id": 13,
+                "description": "No TA asset tracking system",
+                "raised_by": "All",
+                "impact_description": "Cannot monitor material lifecycles or prove circular ROI",
+                "impact_level": 3,
+                "probability_level": 5,
+                "priority_level": 15,
+                "mitigation_strategies": "Share experiment findings to TA IT to explore possibility of using Field Services return work orders",
+                "viability": "IT scope"
+            }
+        ];
+
+        function splitMitigations(text) {
+            if (!text) return [];
+            const lines = text.split('\n').filter(item => item.trim().length > 0);
+            const grouped = [];
+            let currentItem = null;
+            
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                const isSubBullet = /^[-—–]/.test(trimmed) || 
+                                   /^[ivxlcdm]+\)/.test(trimmed) || 
+                                   /^[a-z]\)/.test(trimmed);
+                
+                if (isSubBullet && currentItem) {
+                    if (!currentItem.subItems) {
+                        currentItem.subItems = [];
+                    }
+                    currentItem.subItems.push(trimmed);
+                } else {
+                    currentItem = {
+                        text: trimmed,
+                        subItems: []
+                    };
+                    grouped.push(currentItem);
+                }
+            });
+            
+            return grouped;
+        }
+
+        function renderRisks(filterPriority = 'all') {
+            const risksList = document.getElementById('risksList');
+            const filteredRisks = filterPriority === 'all' 
+                ? risks 
+                : risks.filter(r => r.priority_level === parseInt(filterPriority));
+            
+            const tableRows = filteredRisks.map(risk => {
+                const mitigations = splitMitigations(risk.mitigation_strategies);
+                const levelClass = risk.priority_level === 25 ? 'risk-level-25' 
+                    : risk.priority_level === 16 ? 'risk-level-16'
+                    : risk.priority_level === 15 ? 'risk-level-15'
+                    : 'risk-level-low';
+                
+                const mitigationsHTML = mitigations.length > 0 ? `
+                    <ul class="mitigation-list">
+                        ${mitigations.map(item => {
+                            let html = `<li>${item.text}`;
+                            if (item.subItems && item.subItems.length > 0) {
+                                html += `<ul class="mitigation-sub-list">
+                                    ${item.subItems.map(sub => `<li>${sub}</li>`).join('')}
+                                </ul>`;
+                            }
+                            html += `</li>`;
+                            return html;
+                        }).join('')}
+                    </ul>
+                ` : '—';
+                
+                return `
+                    <tr data-priority="${risk.priority_level}">
+                        <td class="risk-num-cell">${risk.id}</td>
+                        <td class="risk-desc-cell">${risk.description}</td>
+                        <td style="font-size: 0.9rem; color: #475569;">${risk.impact_description || '—'}</td>
+                        <td class="risk-level-cell">
+                            <div class="risk-level-badge ${levelClass}">${risk.priority_level}</div>
+                        </td>
+                        <td style="font-size: 0.9rem; color: #475569;">${mitigationsHTML}</td>
+                    </tr>
+                `;
+            }).join('');
+            
+            risksList.innerHTML = `
+                <div class="risks-table-container">
+                    <table class="risks-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Risk Description</th>
+                                <th>Impact</th>
+                                <th>Risk Level</th>
+                                <th>Mitigation Strategies</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${tableRows}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // Event listeners for filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderRisks(btn.dataset.filter);
+            });
+        });
+
+        // Initialize risks table
+        renderRisks();
+    </script>
+</body>
+</html>
