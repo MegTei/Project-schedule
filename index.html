@@ -172,8 +172,8 @@
 
         .gantt-chart {
             display: grid;
-            grid-template-columns: 285px 38px 75px 60px repeat(15, 113px);
-            min-width: 2153px;
+            grid-template-columns: 342px 46px 90px 60px repeat(15, 113px);
+            min-width: 2233px;
         }
 
         .timeline-header {
@@ -302,6 +302,10 @@
             grid-column: span 5;
         }
 
+        .span-6 {
+            grid-column: span 6;
+        }
+
         .span-4 {
             grid-column: span 4;
         }
@@ -352,6 +356,11 @@
 
         .bar.phase5 {
             background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+        }
+
+        .bar.phase4-teal {
+            background: linear-gradient(135deg, #00EAEA 0%, #00c4c4 100%);
+            color: #003333;
         }
 
         .bar.phase6 {
@@ -784,8 +793,8 @@
                                                 <!-- Project Summary Section -->
                 <div class="container">
                     <!-- Scope Section -->
-                    <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-left: 4px solid #0288CC; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                        <div style="font-weight: 700; color: #0271ad; font-size: 1rem; margin-bottom: 12px;">Scope</div>
+                    <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-left: 4px solid #0288CC; padding: 8px 15px; border-radius: 12px; margin-bottom: 8px;">
+                        <div style="font-weight: 700; color: #0271ad; font-size: 1rem; margin-bottom: 5px;">Scope</div>
                         <div style="color: #334155; line-height: 1.6; font-size: 0.9rem;">
                             Current state materials will be benchmarked and mapped to viable closed-loop alternatives suitable for precinct long-term (evergreen) applications.
                             <br>
@@ -799,46 +808,46 @@
                 </div>
 
                 <!-- Direction on Evergreen Elements -->
-                <div style="background: white; border-radius: 14px; padding: 28px; margin-bottom: 30px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
-                        <div style="background: rgba(2, 136, 204, 0.1); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">🌿</div>
+                <div style="background: white; border-radius: 14px; padding: 21px; margin-bottom: 23px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);">
+                    <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 18px;">
+                        <div style="background: rgba(2, 136, 204, 0.1); width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">🌿</div>
                         <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">Project Status & Updates</h2>
                     </div>
                     
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                         <!-- KEY UPDATES -->
                         <div>
-                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #0288CC;">KEY UPDATES</div>
-                            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 9px; padding-bottom: 6px; border-bottom: 3px solid #0288CC;">KEY UPDATES</div>
+                            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: #475569; line-height: 1.4;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Current state materials benchmarking complete</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Closed loop research underway</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Responsible materials research underway</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>2 xDesign sync: evergreen elements unknown - approval to proceed with target materials</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Responsible materials spec sheets</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Target materials draft shortlist</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>RFP input complete</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Dave/ Jordan current state materials review</span>
                                 </div>
@@ -847,37 +856,37 @@
                         
                         <!-- KEY MEETINGS NEXT WEEK -->
                         <div>
-                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #fb923c;">KEY MEETINGS WEEK OF 27-APR ★</div>
-                            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 9px; padding-bottom: 6px; border-bottom: 3px solid #fb923c;">KEY MEETINGS WEEK OF 27-APR ★</div>
+                            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: #475569; line-height: 1.4;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Continue Procurement discovery + supplier day (Sam/ Ed/ Meg)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Fire/ safety review with Lee/ John R (Meg/ Matt)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Arron - AO Reserve use case (Meg)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Current state materials benchmarking costs (Meg)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Biz case/ Waste mgt costs (IKON/ Atlas) trends (Meg)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Warehouse capacity, storage space value, handling processes (Matt/ Meg)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Evaluate closed loop programs with waste ops (Meg/ Matt/ Justine)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>Complete resource recovery research (Meg)</span>
                                 </div>
@@ -886,9 +895,9 @@
                         
                         <!-- BLOCKERS AND CONSIDERATIONS -->
                         <div>
-                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #fbbf24;">BLOCKERS AND CONSIDERATIONS</div>
-                            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 9px; padding-bottom: 6px; border-bottom: 3px solid #fbbf24;">BLOCKERS AND CONSIDERATIONS</div>
+                            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: #475569; line-height: 1.4;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fbbf24; font-weight: 700; flex-shrink: 0;">!</span>
                                     <span>Systems + process to support adoption </span>
                                 </div>
@@ -1457,7 +1466,7 @@
                                 <div class="task-name">Design Sync: Evergreen design elements structural application reqs</div>
                             </div>
                             <div class="lead-cell">Meg</div>
-                            <div class="contrib-cell">Peter,  Vange, PK, Matt, John Robinson</div>
+                            <div class="contrib-cell">Peter, Vange, PK, Matt</div>
                             <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1753,7 +1762,7 @@
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell key-task">
                                 <div class="task-name">AO Fire/ safety materials review &amp; endorsement</div>
                             </div>
@@ -1770,8 +1779,9 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase3">Safety approval</div>
+                            </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1804,9 +1814,9 @@
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row in-progress">
+                                                <div class="task-row in-progress">
                             <div class="task-cell key-task">
-                                <div class="task-name">Revised CDG and RML I dynamic HTML</div>
+                                <div class="task-name">Revised CDG and RML - dynamic HTML</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell"></div>
@@ -1816,13 +1826,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-3">
+                            <div class="timeline-cell span-6">
                                 <div class="bar phase3">Dynamic html tool</div>
                             </div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1858,7 +1865,7 @@
                                 <div class="task-name">Design Sync: Evergreen design elements in RFP</div>
                             </div>
                             <div class="lead-cell">Meg</div>
-                            <div class="contrib-cell">Peter, Vange, PK, Matt, John Robinson</div>
+                            <div class="contrib-cell">Peter, Vange, PK, Matt</div>
                             <div class="status-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1935,7 +1942,7 @@
 
                         <div class="task-row in-progress">
                             <div class="task-cell">
-                                <div class="task-name">AO procurement pricing and preferred suppliers<br>Q Is there a preferred supplier framework required?</div>
+                                <div class="task-name">AO procurement pricing and preferred supplier list/ framework</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Sam/ Ed</div>
@@ -2068,7 +2075,7 @@
                                 <div class="task-name">Agency/ builder consultation on materials during RFP</div>
                             </div>
                             <div class="lead-cell">Meg</div>
-                            <div class="contrib-cell">Peter, Gemma, Liam, Vange, Ash</div>
+                            <div class="contrib-cell">Peter, Dave</div>
                             <div class="status-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2246,7 +2253,7 @@
                                 <div class="task-name">Design Sync: Draft business case for review</div>
                             </div>
                             <div class="lead-cell">Meg</div>
-                            <div class="contrib-cell">Peter,  Vange, PK, Matt, John Robinson</div>
+                            <div class="contrib-cell">Peter, Vange, PK, Matt</div>
                             <div class="status-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2349,7 +2356,7 @@
                         </div>
 
 <div class="phase-row">
-                            <div class="phase-header">PHASE 4: Adoption: Agency/ builder support &amp; education (TBC)</div>
+                            <div class="phase-header">PHASE 4: Adoption: Agency/ builder support &amp; education</div>
                         </div>
 
                                                 <div class="task-row">
@@ -2370,7 +2377,7 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase5">TBC</div>
+                                <div class="bar phase4-teal">TBC</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2395,7 +2402,7 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase5">Engagement plan</div>
+                                <div class="bar phase4-teal">Engagement plan</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2420,7 +2427,7 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase5">Precinct briefing</div>
+                                <div class="bar phase4-teal">Precinct briefing</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2445,7 +2452,7 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase5">TA PMs briefing</div>
+                                <div class="bar phase4-teal">TA PMs briefing</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2470,7 +2477,7 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase5">Activations briefing</div>
+                                <div class="bar phase4-teal">Activations briefing</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2495,7 +2502,7 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase5">Supplier day</div>
+                                <div class="bar phase4-teal">Supplier day</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2520,7 +2527,7 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase5">Closed loop</div>
+                                <div class="bar phase4-teal">Closed loop</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2665,7 +2672,7 @@
 
                                 <!-- What is Known / Unknown Section -->
                 <div style="background: white; border-radius: 14px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                    <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 18px;">
                         <div style="background: rgba(251, 146, 60, 0.1); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">💡</div>
                         <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">Risk Context</h2>
                     </div>
@@ -2675,27 +2682,27 @@
                         <div>
                             <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #10b981;">What is known</div>
                             <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">i)</span>
                                     <span><strong>Budget & cost resistance:</strong> feedback reflects that responsible alternatives have not been supported due to budgets</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">ii)</span>
                                     <span><strong>Effort & time constraints:</strong> Circular design requires more resources and time than 'build & bin' approach. Limited bump out timeframe is a hard constraint to find time to disassemble</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">iii)</span>
                                     <span><strong>Stakeholder alignment gap:</strong> Disconnect between partners, agencies, designers and builders, with few including materials recovery in designs and limited communication of target materials requirements</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">iv)</span>
                                     <span>Target material recommendations will be optional</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">v)</span>
                                     <span>There will be resistance to adopt recommnedations which impact builder margins and supply relationships</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">vi)</span>
                                     <span>Materials aren't the problem — it's how we treat them</span>
                                 </div>
@@ -2704,26 +2711,26 @@
                         
                         <!-- What is Unknown -->
                         <div>
-                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #fb923c;">What is unknown</div>
+                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 9px; padding-bottom: 6px; border-bottom: 3px solid #fb923c;">What is unknown</div>
                             <p style="font-size: 0.85rem; color: #475569; margin-bottom: 10px; line-height: 1.5;">At this outset the adoption approach is not clear.</p>
                             <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
                                     <span>The best approach - product led vs AO standard (ref breakdown below)</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
                                     <span>How will agencies/ builders report they have used a material for an evergreen design element and how will it be verified</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
                                     <span>What is the lifecycle process - how will evergeen assets be procured, reported, tracked, stored</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
                                     <span>How will TA source segregate for closed-loop materials - relevant if flooring in scope and single use but recovered</span>
                                 </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <div style="display: flex; align-items: flex-start; gap: 6px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
                                     <span>The most viable/ feasible/ desirable 3 year incremental plan</span>
                                 </div>
