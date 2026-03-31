@@ -102,7 +102,7 @@
         }
 
         .container {
-            min-width: 1800px;
+            min-width: 1350px;
             background: var(--card);
             border-radius: 16px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -161,31 +161,19 @@
             margin-top: 30px;
         }
 
-        .gantt-header {
-            display: grid;
-            grid-template-columns: 380px 50px 100px 80px repeat(12, 150px);
-            min-width: 2530px;
-            border: 1px solid var(--border);
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            overflow-x: auto;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        }
-
-        .gantt-content {
+        /* Single scroll container — header + rows share one overflow context */
+        .gantt-scroll-wrapper {
             overflow-x: auto;
             overflow-y: auto;
             max-height: 1200px;
             border: 1px solid var(--border);
-            border-top: none;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
+            border-radius: 12px;
         }
 
         .gantt-chart {
             display: grid;
-            grid-template-columns: 380px 50px 100px 80px repeat(12, 150px);
-            min-width: 2530px;
+            grid-template-columns: 285px 38px 75px 60px repeat(15, 113px);
+            min-width: 2153px;
         }
 
         .timeline-header {
@@ -195,12 +183,15 @@
         .week-header {
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             color: white;
-            padding: 16px 8px;
+            padding: 12px 6px;
             font-weight: 600;
             font-size: 0.85rem;
             text-align: center;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             line-height: 1.3;
+            position: sticky;
+            top: 0;
+            z-index: 20;
         }
 
         .week-header:first-child {
@@ -214,8 +205,10 @@
 
         .phase-header {
             grid-column: 1 / -1;
+            position: relative;
+            z-index: 1;
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            padding: 12px 24px;
+            padding: 9px 18px;
             font-weight: 700;
             font-size: 0.9rem;
             color: var(--text);
@@ -229,7 +222,7 @@
         }
 
         .task-cell {
-            padding: 12px 20px;
+            padding: 9px 15px;
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             background: white;
@@ -244,7 +237,7 @@
         }
 
         .lead-cell {
-            padding: 12px 12px;
+            padding: 9px 9px;
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             background: white;
@@ -256,7 +249,7 @@
         }
 
         .contrib-cell {
-            padding: 12px 12px;
+            padding: 9px 9px;
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             background: white;
@@ -289,7 +282,7 @@
         }
 
         .timeline-cell {
-            padding: 10px 6px;
+            padding: 7px 5px;
             border-right: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             background: white;
@@ -321,8 +314,8 @@
         }
 
         .bar {
-            height: 30px;
-            border-radius: 6px;
+            height: 22px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -437,7 +430,7 @@
         }
 
         .status-cell {
-            padding: 8px 6px;
+            padding: 6px 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -768,7 +761,7 @@
         <!-- Top Banner Header -->
         <div style="background: linear-gradient(135deg, #1E2886 0%, #2d3b9e 100%); padding: 40px 60px; margin: -30px -30px 30px -30px; border-radius: 16px 16px 0 0;">
             <h1 style="color: white; font-size: 2.5rem; font-weight: 700; margin: 0 0 8px 0; text-align: center;">AO Materials Program Dashboard</h1>
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin: 0; text-align: center; font-weight: 400;">Responsible Materials Research & Implementation | Last update 18-Mar-26</p>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin: 0; text-align: center; font-weight: 400;">Responsible Materials Research & Implementation | Last update 31-Mar-26</p>
         </div>
 
         <!-- Tab Navigation -->
@@ -845,24 +838,24 @@
                                     <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
                                     <span>RFP input complete</span>
                                 </div>
+                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                    <span style="color: #0288CC; font-weight: 700; flex-shrink: 0;">•</span>
+                                    <span>Dave/ Jordan current state materials review</span>
+                                </div>
                             </div>
                         </div>
                         
                         <!-- KEY MEETINGS NEXT WEEK -->
                         <div>
-                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #fb923c;">KEY MEETINGS WEEK OF 23-MAR ★</div>
+                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #fb923c;">KEY MEETINGS WEEK OF 27-APR ★</div>
                             <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
                                 <div style="display: flex; align-items: flex-start; gap: 8px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
-                                    <span>Continue Procurement (Sam/ Ed/ Meg)</span>
+                                    <span>Continue Procurement discovery + supplier day (Sam/ Ed/ Meg)</span>
                                 </div>
                                 <div style="display: flex; align-items: flex-start; gap: 8px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
-                                    <span>Dave/ Jordan current state materials review (Meg)</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 8px;">
-                                    <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
-                                    <span>Fire/ safety review with John R (Meg)</span>
+                                    <span>Fire/ safety review with Lee/ John R (Meg/ Matt)</span>
                                 </div>
                                 <div style="display: flex; align-items: flex-start; gap: 8px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
@@ -878,11 +871,15 @@
                                 </div>
                                 <div style="display: flex; align-items: flex-start; gap: 8px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
-                                    <span>Warehouse brief (Matt/ Meg)</span>
+                                    <span>Warehouse capacity, storage space value, handling processes (Matt/ Meg)</span>
                                 </div>
                                 <div style="display: flex; align-items: flex-start; gap: 8px;">
                                     <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
-                                    <span>Resource recovery research (Meg)</span>
+                                    <span>Evaluate closed loop programs with waste ops (Meg/ Matt/ Justine)</span>
+                                </div>
+                                <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                    <span style="color: #fb923c; font-weight: 700; flex-shrink: 0;">•</span>
+                                    <span>Complete resource recovery research (Meg)</span>
                                 </div>
                             </div>
                         </div>
@@ -901,9 +898,12 @@
                 </div>
 
                 <div class="gantt-container">
-                    <!-- Static Header -->
-                    <div class="gantt-header">
-                        <div class="week-header">Task / Activity</div>
+                    <!-- Single scroll wrapper: header + rows share one scroll context -->
+                    <div class="gantt-scroll-wrapper">
+                        <div class="gantt-chart">
+
+                        <!-- Header row (sticky via CSS) -->
+                        <div class="week-header" style="text-align:left; padding-left:24px;">Task / Activity</div>
                         <div class="week-header">Lead</div>
                         <div class="week-header">Contributors</div>
                         <div class="week-header">Status</div>
@@ -913,17 +913,15 @@
                         <div class="week-header">Week 3<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">23-Feb</span></div>
                         <div class="week-header">Week 4<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">2-Mar</span></div>
                         <div class="week-header">Week 5<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">9-Mar</span></div>
-                        <div class="week-header current-week">★ Week 6<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">16-Mar (Now)</span></div>
+                        <div class="week-header">Week 6<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">16-Mar</span></div>
                         <div class="week-header">Week 7<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">23-Mar</span></div>
-                        <div class="week-header">Week 8<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">13-Apr</span></div>
-                        <div class="week-header">Week 9<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">20-Apr</span></div>
-                        <div class="week-header">Week 10+<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">27-Apr+</span></div>
+                        <div class="week-header current-week">★ Week 8<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">30-Mar (Now)</span></div>
+                        <div class="week-header">Week 9<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">13-Apr</span></div>
+                        <div class="week-header">Week 10<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">20-Apr</span></div>
+                        <div class="week-header">Week 11<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">27-Apr</span></div>
+                        <div class="week-header">Week 12<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">4-May</span></div>
+                        <div class="week-header">Week 13+<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">11-May+</span></div>
                         <div class="week-header">Post AO27</div>
-                    </div>
-                    
-                    <!-- Scrollable Content -->
-                    <div class="gantt-content">
-                        <div class="gantt-chart">
 
                         <!-- PHASE 0: Responsible Materials RFP Integration Scope & Approval -->
                         <div class="phase-row">
@@ -947,7 +945,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -970,7 +971,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -993,7 +997,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1015,7 +1022,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1033,11 +1043,13 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
-                                <div class="bar phase1">Expectations</div>
-                            </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1070,7 +1082,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1093,7 +1108,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1116,7 +1134,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1139,7 +1160,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1162,7 +1186,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1185,7 +1212,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1208,7 +1238,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1231,7 +1264,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1254,7 +1290,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1270,14 +1309,17 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell">
-                                <div class="bar phase2">Lee Bros</div>
+                                <div class="bar phase2">Lee bros </div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1300,7 +1342,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1323,7 +1368,10 @@
                             <div class="timeline-cell span-2">
                                 <div class="bar phase2">TA Infra</div>
                             </div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1339,11 +1387,15 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-4">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-3">
                                 <div class="bar phase2">Cost baseline</div>
                             </div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1355,18 +1407,21 @@
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Matt</div>
-                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell">
-                                <div class="bar phase2">Waste (IKON) costs</div>
+                                <div class="bar phase2">IKON costs</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1389,30 +1444,34 @@
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase2">AO Reserve specs</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
-                        <div class="task-row">
+                                                                        <div class="task-row">
                             <div class="task-cell key-task">
                                 <div class="task-name">Design Sync: Evergreen design elements structural application reqs</div>
                             </div>
                             <div class="lead-cell">Meg</div>
-                            <div class="contrib-cell">Peter, Vange, PK, Matt, John Robinson</div>
+                            <div class="contrib-cell">Peter,  Vange, PK, Matt, John Robinson</div>
                             <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell">
-                                <div class="bar phase2">Material specs</div>
+                                <div class="bar phase2">material specs</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell">
-                                <div class="bar phase2">Material specs</div>
+                                <div class="bar phase2">material specs</div>
                             </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1427,18 +1486,20 @@
                             </div>
                             <div class="lead-cell"></div>
                             <div class="contrib-cell"></div>
-                            <div class="status-cell"></div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
                                 <div class="bar milestone">Milestone: Benchmark</div>
                             </div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1449,7 +1510,7 @@
                             <div class="phase-header">1.2 Responsible Materials - product research, certifications & circularity</div>
                         </div>
 
-                        <div class="task-row in-progress">
+                                                <div class="task-row in-progress">
                             <div class="task-cell">
                                 <div class="task-name">Australian supplier shortlist</div>
                             </div>
@@ -1465,12 +1526,17 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase3">Revision</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row in-progress">
+                                                <div class="task-row in-progress">
                             <div class="task-cell">
-                                <div class="task-name">Material research & data collection: Certifications</div>
+                                <div class="task-name">Material research &amp; data collection: Certifications</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Andrea</div>
@@ -1484,12 +1550,17 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase3">Revision</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row in-progress">
+                                                <div class="task-row in-progress">
                             <div class="task-cell">
-                                <div class="task-name">Material research & data collection: Specifications and supply</div>
+                                <div class="task-name">Material research &amp; data collection: Specifications and supply</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Andrea</div>
@@ -1501,6 +1572,11 @@
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
+                                <div class="bar phase3">Revision</div>
+                            </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1520,7 +1596,10 @@
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1543,7 +1622,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1566,7 +1648,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1587,7 +1672,10 @@
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1607,7 +1695,10 @@
                                 <div class="bar phase3">Remondis</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1629,13 +1720,16 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell">
                                 <div class="task-name">Independent consultant product validation & specifications & supply</div>
                             </div>
@@ -1648,11 +1742,12 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase3">Product validation</div>
-                            </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1660,7 +1755,7 @@
 
                         <div class="task-row">
                             <div class="task-cell key-task">
-                                <div class="task-name">AO Fire/ safety materials review & endorsement</div>
+                                <div class="task-name">AO Fire/ safety materials review &amp; endorsement</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">John Robinson</div>
@@ -1671,9 +1766,11 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
-                                <div class="bar phase3">Safety approval</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1681,7 +1778,7 @@
                         </div>
 
 
-                        <div class="task-row in-progress">
+                                                <div class="task-row in-progress">
                             <div class="task-cell">
                                 <div class="task-name">Develop incremental adoption plan (process, people and systems to make this work)</div>
                             </div>
@@ -1692,11 +1789,16 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-3">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
                                 <div class="bar phase3">Adoption plan</div>
                             </div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1704,7 +1806,7 @@
 
                         <div class="task-row in-progress">
                             <div class="task-cell key-task">
-                                <div class="task-name">★ Revised CDG and RML I dynamic HTML</div>
+                                <div class="task-name">Revised CDG and RML I dynamic HTML</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell"></div>
@@ -1715,31 +1817,37 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-3">
-                                <div class="bar phase3">html tool</div>
+                                <div class="bar phase3">Dynamic html tool</div>
                             </div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row in-progress">
+                        <div class="task-row">
                             <div class="task-cell key-task">
                                 <div class="task-name">Circular design RFP reqs - Target materials &amp; methods</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Matt/ Sam/ Ed</div>
-                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase3">RFP</div>
+                                <div class="bar phase3">RFP circular reqs</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1758,11 +1866,14 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar phase3">Alignment/ approval</div>
                             </div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1774,7 +1885,7 @@
                             </div>
                             <div class="lead-cell"></div>
                             <div class="contrib-cell"></div>
-                            <div class="status-cell"></div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1782,21 +1893,23 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell">
-                                <div class="bar milestone">Milestone: Shortlist</div>
+                                <div class="bar milestone">RFP published</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
-                        <!-- PHASE 2: Preferred materials pricing -->
                         <div class="phase-row">
                             <div class="phase-header">PHASE 2: Preferred materials pricing </div>
                         </div>
 
-                        <div class="task-row">
+                        <div class="task-row in-progress">
                             <div class="task-cell key-task">
                                 <div class="task-name">AO procurement  (quotes)</div>
                             </div>
@@ -1815,9 +1928,12 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                        <div class="task-row in-progress">
                             <div class="task-cell">
                                 <div class="task-name">AO procurement pricing and preferred suppliers<br>Q Is there a preferred supplier framework required?</div>
                             </div>
@@ -1829,9 +1945,11 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
-                                <div class="bar phase5">Pricing analysis</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1839,9 +1957,9 @@
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                        <div class="task-row in-progress">
                             <div class="task-cell">
-                                <div class="task-name">RFP expectations (Waste mgt plan, asset tracking, preferred suppliers, auditing, reporting)</div>
+                                <div class="task-name">RFP expectations<br>(Waste mgt plan, asset tracking, preferred suppliers, auditing, reporting)</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Matt, Sam</div>
@@ -1852,13 +1970,13 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase5">RFP content draft</div>
-                            </div>
-                            <div class="timeline-cell">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
                                 <div class="bar phase5">Agency materials</div>
                             </div>
-                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1866,7 +1984,7 @@
 
                         <div class="task-row">
                             <div class="task-cell">
-                                <div class="task-name">Decision Gate: Finance & procurement team consultation to feed into <br>- Agency RFP shortlist </div>
+                                <div class="task-name">Decision Gate: Finance &amp; procurement team consultation to feed into <br>- Agency RFP shortlist </div>
                             </div>
                             <div class="lead-cell">Matt</div>
                             <div class="contrib-cell">Finance/ procurement stakeholders</div>
@@ -1877,11 +1995,14 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar phase5">Alignment/ approval</div>
                             </div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1900,19 +2021,21 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar milestone">Milestone:  Preferred  suppliers  </div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
                         </div>
 
-                        <!-- 2.1 Consultation -->
                         <div class="phase-row">
-                            <div class="phase-header">2.1 Consultation: Agency & TA Materials feasibility</div>
+                            <div class="phase-header">2.1 Consultation: Agency &amp; TA Materials feasibility</div>
                         </div>
 
                         <div class="task-row">
@@ -1927,9 +2050,13 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-3">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
                                 <div class="bar phase5">TA feedback</div>
                             </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1950,12 +2077,13 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase5">Agency feedback</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
                                 <div class="bar phase5">Agency feedback</div>
                             </div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1976,14 +2104,14 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase5">Revised shortlist</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <!-- PHASE 3: Business Case Development -->
                         <div class="phase-row">
                             <div class="phase-header">PHASE 3: Business Case Development</div>
                         </div>
@@ -2000,7 +2128,9 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell">
                                 <div class="bar phase6">Warehouse capacity</div>
                             </div>
                             <div class="timeline-cell"></div>
@@ -2008,15 +2138,18 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                        <div class="task-row in-progress">
                             <div class="task-cell">
                                 <div class="task-name">AO26 waste insights (IKON)</div>
                             </div>
                             <div class="lead-cell">Matt</div>
-                            <div class="contrib-cell">M&OP</div>
-                            <div class="status-cell"></div>
+                            <div class="contrib-cell">M&amp;OP</div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2025,6 +2158,8 @@
                             <div class="timeline-cell span-2">
                                 <div class="bar phase6">IKON</div>
                             </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2048,16 +2183,17 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase6">AO Reserve proof point</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
                         <div class="task-row">
                             <div class="task-cell">
-                                <div class="task-name">TCO analysis, storage/ warehouse capacity, cost modelling & ROSI</div>
+                                <div class="task-name">TCO analysis, storage/ warehouse capacity, cost modelling &amp; ROSI</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Finance Team</div>
@@ -2067,13 +2203,14 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase6">TCO framework</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
                                 <div class="bar phase6">Financial modelling</div>
                             </div>
-                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2091,10 +2228,14 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-3">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
                                 <div class="bar phase6">Business case outline</div>
                             </div>
-                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2113,17 +2254,20 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar phase6">Alignment/ approval</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell">
                                 <div class="task-name">MILESTONE: deliverable - business case</div>
                             </div>
@@ -2137,18 +2281,20 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar milestone">Milestone: Business case</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
                         </div>
 
-                        <!-- 3.1 RFP INCLUDES TARGET MATERIALS -->
                         <div class="phase-row">
-                            <div class="phase-header"><strong>3.1 RFP INCLUDES TARGET MATERIALS</strong></div>
+                            <div class="phase-header"><strong>3.1 RFP includes target materials</strong></div>
                         </div>
 
                         <div class="task-row">
@@ -2166,9 +2312,12 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase6">Materials spec for RFP shortlist</div>
+                                <div class="bar phase6">Materials spec for RFP shortlist </div>
                             </div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2189,24 +2338,26 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar milestone">Milestones: Final materials spec</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
-                        <!-- PHASE 4: Adoption -->
-                        <div class="phase-row">
-                            <div class="phase-header">PHASE 4: Adoption: Agency/ builder support & education (TBC)</div>
+<div class="phase-row">
+                            <div class="phase-header">PHASE 4: Adoption: Agency/ builder support &amp; education (TBC)</div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell">
-                                <div class="task-name">Ecosystem engagement (agencies/ builders/ designers)<br>Living feasibility study</div>
+                                <div class="task-name">2026 Circualr design Advocates kick off</div>
                             </div>
                             <div class="lead-cell">Meg</div>
-                            <div class="contrib-cell"></div>
+                            <div class="contrib-cell">Matt</div>
                             <div class="status-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2216,16 +2367,166 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase-grey">TBC</div>
+                                <div class="bar phase5">TBC</div>
                             </div>
-                            <div class="timeline-cell">
-                                <div class="bar phase-grey">TBC</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <!-- PHASE 5: Post-AO27 -->
+                                                <div class="task-row in-progress">
+                            <div class="task-cell">
+                                <div class="task-name">Ecosystem engagement (agencies/ builders/ designers)<br>Living feasibility study</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell"></div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">Engagement plan</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                                                <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">1 Precinct briefing</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Vange/ B</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">Precinct briefing</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                                                <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">2 TA PMs briefing</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">TA PMs briefing</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                                                <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">3 Activations briefing</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Bianca</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">Activations briefing</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                                                <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">4 Samples/ meet the suppliers day</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Ed/ Sam</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">Supplier day</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
+                                                <div class="task-row">
+                            <div class="task-cell">
+                                <div class="task-name">Closed loop materials &amp; programs &amp; waste ops</div>
+                            </div>
+                            <div class="lead-cell">Meg</div>
+                            <div class="contrib-cell">Matt/ Justine</div>
+                            <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
+                                <div class="bar phase5">Closed loop</div>
+                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                        </div>
+
                         <div class="phase-row">
                             <div class="phase-header">PHASE 5: Post-AO27 Material Feasibility Review</div>
                         </div>
@@ -2248,9 +2549,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
-                                <div class="bar phase-grey">Measure effectiveness</div>
-                            </div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
                         <div class="task-row">
@@ -2268,7 +2570,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
