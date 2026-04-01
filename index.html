@@ -778,6 +778,7 @@
             <button class="tab-button active" onclick="switchTab('schedule')">Project Schedule</button>
             <button class="tab-button" onclick="switchTab('risks')">Risk Register</button>
             <button class="tab-button" onclick="switchTab('findings')">Findings</button>
+            <button class="tab-button" onclick="switchTab('measures')">Measures of Success</button>
         </div>
 
         <!-- Schedule Tab -->
@@ -2977,6 +2978,18 @@
                             <div class="f-card-body">Where materials are optional and not required, adoption by designers/agencies/builders is expected to be low.</div>
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Seek adoption in AO27 not just with Precincts but also TA delivery. Micro approach: Zone in on GSO and ball park as focus for success</div>
                         </div>
+
+                        <div class="f-card">
+                            <div class="f-finding-num">12</div>
+                            <div class="f-card-eyebrow">Delivery risk</div>
+                            <div class="f-card-title">RFP accountability &amp; TA teams — how will MRV be supported?</div>
+                            <div class="f-card-body">How monitoring, verification and reporting (MRV) of circular outcomes will be supported is an open risk. There is a current lack of systems to track and report asset lifecycle.</div>
+                            <div class="f-tag-row">
+                                <span class="f-tag f-tag-no">✕ No asset tracking system</span>
+                                <span class="f-tag f-tag-warn">! Open risk</span>
+                            </div>
+                            <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Define what needs to be measured, by who and how. Explore TA Field Services return work orders as an interim tracking mechanism or smartsheet asset library.</div>
+                        </div>
                     </div>
 
                     <!-- RED -->
@@ -3017,6 +3030,332 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+
+        <!-- Measures of Success Tab -->
+        <div id="measures-tab" class="tab-content">
+            <div class="container">
+                <h2 style="font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">Measures of Success</h2>
+                <p style="color: var(--text-light); margin-bottom: 24px; font-size: 1rem;">Recommended success criteria across the three-year incremental framework — grounded in findings and risk register. GSO and ballpark as the AO27 focus zone.</p>
+
+                <style>
+                    .mos-year-chain {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        margin-bottom: 28px;
+                        flex-wrap: wrap;
+                    }
+                    .mos-year-pill {
+                        padding: 5px 18px;
+                        border-radius: 100px;
+                        font-size: 0.8rem;
+                        font-weight: 700;
+                        letter-spacing: 0.5px;
+                    }
+                    .mos-pill-y1 { background: rgba(2,136,204,0.12); color: #0288CC; border: 1px solid rgba(2,136,204,0.3); }
+                    .mos-pill-y2 { background: rgba(16,185,129,0.12); color: #059669; border: 1px solid rgba(16,185,129,0.3); }
+                    .mos-pill-y3 { background: rgba(167,139,250,0.12); color: #6d28d9; border: 1px solid rgba(167,139,250,0.3); }
+                    .mos-arrow { color: #94a3b8; font-size: 1.1rem; }
+
+                    .mos-col-headers {
+                        display: grid;
+                        grid-template-columns: 100px repeat(5, 1fr);
+                        gap: 8px;
+                        margin-bottom: 8px;
+                        padding-bottom: 10px;
+                        border-bottom: 2px solid #0288CC;
+                    }
+                    .mos-col-head {
+                        font-size: 0.67rem;
+                        font-weight: 700;
+                        letter-spacing: 0.8px;
+                        text-transform: uppercase;
+                        color: #64748b;
+                        padding: 0 6px;
+                    }
+                    .mos-col-head:first-child { color: #0288CC; }
+
+                    .mos-year-row {
+                        display: grid;
+                        grid-template-columns: 100px repeat(5, 1fr);
+                        gap: 8px;
+                        margin-bottom: 10px;
+                        align-items: stretch;
+                    }
+
+                    .mos-year-label {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        padding-top: 12px;
+                        padding-right: 6px;
+                    }
+                    .mos-year-tag {
+                        font-size: 0.6rem;
+                        font-weight: 700;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        color: #94a3b8;
+                        margin-bottom: 2px;
+                    }
+                    .mos-year-num {
+                        font-size: 1.6rem;
+                        font-weight: 700;
+                        line-height: 1;
+                    }
+                    .mos-y1 .mos-year-num { color: #0288CC; }
+                    .mos-y2 .mos-year-num { color: #059669; }
+                    .mos-y3 .mos-year-num { color: #6d28d9; }
+
+                    .mos-cell {
+                        border-radius: 12px;
+                        padding: 12px 14px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        border: 1.5px solid #e2e8f0;
+                        background: #f8fafc;
+                    }
+                    .mos-y1 .mos-cell { border-color: rgba(2,136,204,0.2); }
+                    .mos-y2 .mos-cell { border-color: rgba(16,185,129,0.2); }
+                    .mos-y3 .mos-cell { border-color: rgba(167,139,250,0.2); }
+
+                    .mos-cell-label {
+                        font-size: 0.6rem;
+                        font-weight: 700;
+                        letter-spacing: 0.8px;
+                        text-transform: uppercase;
+                        margin-bottom: 2px;
+                    }
+                    .mos-y1 .mos-cell-label { color: #0288CC; }
+                    .mos-y2 .mos-cell-label { color: #059669; }
+                    .mos-y3 .mos-cell-label { color: #6d28d9; }
+
+                    .mos-measure {
+                        font-size: 0.75rem;
+                        line-height: 1.5;
+                        color: #334155;
+                        display: flex;
+                        gap: 5px;
+                        align-items: flex-start;
+                    }
+                    .mos-measure::before {
+                        content: "→";
+                        flex-shrink: 0;
+                        color: #94a3b8;
+                        font-size: 0.7rem;
+                        margin-top: 1px;
+                    }
+
+                    .mos-tag {
+                        display: inline-flex;
+                        align-items: center;
+                        font-size: 0.62rem;
+                        font-weight: 700;
+                        padding: 2px 7px;
+                        border-radius: 100px;
+                        margin-top: 4px;
+                        align-self: flex-start;
+                        white-space: nowrap;
+                    }
+                    .mos-tag-risk { background: #fee2e2; color: #991b1b; }
+                    .mos-tag-finding { background: #dbeafe; color: #1e40af; }
+
+                    .mos-note-banner {
+                        margin-top: 28px;
+                        padding: 16px 20px;
+                        border-radius: 12px;
+                        background: #f0f9ff;
+                        border: 1.5px solid rgba(2,136,204,0.25);
+                        font-size: 0.82rem;
+                        line-height: 1.65;
+                        color: #334155;
+                    }
+                    .mos-note-banner strong { color: #0f172a; }
+                    .mos-note-banner ul { margin: 8px 0 0 16px; }
+                    .mos-note-banner li { margin-bottom: 5px; }
+                </style>
+
+                <!-- Year chain -->
+                <div class="mos-year-chain">
+                    <span class="mos-year-pill mos-pill-y1">AO27 · Year 1</span>
+                    <span class="mos-arrow">→</span>
+                    <span class="mos-year-pill mos-pill-y2">AO28 · Year 2</span>
+                    <span class="mos-arrow">→</span>
+                    <span class="mos-year-pill mos-pill-y3">AO29 · Year 3</span>
+                    <span style="margin-left: 8px; font-size: 0.75rem; color: #94a3b8;">GSO + ballpark as AO27 focus zone</span>
+                </div>
+
+                <!-- Column headers -->
+                <div class="mos-col-headers">
+                    <div class="mos-col-head">Year</div>
+                    <div class="mos-col-head">01 · Targets</div>
+                    <div class="mos-col-head">02 · Materials</div>
+                    <div class="mos-col-head">03 · Methods</div>
+                    <div class="mos-col-head">04 · Accountability</div>
+                    <div class="mos-col-head">05 · Impact</div>
+                </div>
+
+                <!-- AO27 row -->
+                <div class="mos-year-row mos-y1">
+                    <div class="mos-year-label">
+                        <div class="mos-year-tag">Year 1</div>
+                        <div class="mos-year-num">AO27</div>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Start here</div>
+                        <div class="mos-measure">Baseline for circular materials use in GSO + ballpark established and documented</div>
+                        <div class="mos-measure">Finance + executive sign-off on tolerable cost uplift range for year one</div>
+                        <div class="mos-measure">Reuse and recovery rates formally tracked for the first time</div>
+                        <span class="mos-tag mos-tag-risk">Risk 1 · Budget alignment</span>
+                        <span class="mos-tag mos-tag-finding">Finding 6 · Exec buy-in</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Zone of focus</div>
+                        <div class="mos-measure">Zone of Focus materials list approved by TA Fire/Safety</div>
+                        <div class="mos-measure">≥3 evergreen structural systems identified, specced and priced</div>
+                        <div class="mos-measure">MDF use quantified and capped — alternatives (compact laminate, melamine) under test</div>
+                        <span class="mos-tag mos-tag-finding">Finding 7 · MDF constraint</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Practices</div>
+                        <div class="mos-measure">DfD + modular design mandated in precinct RFP brief — not optional</div>
+                        <div class="mos-measure">Waste Management Plans required from all agencies and builders in RFP</div>
+                        <div class="mos-measure">Bump-out time increase vs. labour cost trade-off tested with ≥1 builder</div>
+                        <span class="mos-tag mos-tag-risk">Risk 4 · Bump-out time</span>
+                        <span class="mos-tag mos-tag-finding">Finding 4 · Waste bins</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Expectations</div>
+                        <div class="mos-measure">Responsible materials clauses embedded in precinct RFP — primary compliance mechanism</div>
+                        <div class="mos-measure">Asset tracking method agreed with TA (even if manual via Field Services)</div>
+                        <div class="mos-measure">TA PMs briefed with materials compliance process</div>
+                        <span class="mos-tag mos-tag-risk">Risk 9 · Compliance measurement</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Direct impact</div>
+                        <div class="mos-measure">≥1 precinct zone delivers circular outcome documented end-to-end</div>
+                        <div class="mos-measure">Mixed waste stream in focus zones reduced vs AO26 baseline</div>
+                        <div class="mos-measure">Business case for year 2 evidenced with AO27 data</div>
+                        <span class="mos-tag mos-tag-finding">Finding 3 · Audience gap</span>
+                    </div>
+                </div>
+
+                <!-- AO28 row -->
+                <div class="mos-year-row mos-y2">
+                    <div class="mos-year-label">
+                        <div class="mos-year-tag">Year 2</div>
+                        <div class="mos-year-num">AO28</div>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Year 1+</div>
+                        <div class="mos-measure">20% re-use target hit and evidenced by asset tracking data</div>
+                        <div class="mos-measure">Evergreen scope expanded beyond GSO/ballpark to additional precinct zones</div>
+                        <div class="mos-measure">Incremental plan on track per agency/builder delivery reports</div>
+                        <span class="mos-tag mos-tag-risk">Risk 3 · Optional = low adoption</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Expand zone</div>
+                        <div class="mos-measure">Preferred supplier pricing active for ≥3 target materials</div>
+                        <div class="mos-measure">≥1 MDF alternative deployed in a live precinct application</div>
+                        <div class="mos-measure">Evergreen vs annual graphic scope defined across facade systems</div>
+                        <span class="mos-tag mos-tag-risk">Risk 13 · Composite facades</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Competence</div>
+                        <div class="mos-measure">Reused assets tracked across bump-in/bump-out cycle</div>
+                        <div class="mos-measure">Labour cost of disassembly factored into agency and builder quotes</div>
+                        <div class="mos-measure">High-value composite structures audited for material recovery</div>
+                        <span class="mos-tag mos-tag-risk">Risk 2 · Cost vs circular</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Contract delivery</div>
+                        <div class="mos-measure">Agencies + builders demonstrate delivery against incremental plan in AO28 contract</div>
+                        <div class="mos-measure">Waste costs distributed to agencies/builders without approved Waste Management Plans</div>
+                        <div class="mos-measure">Partner/designer circular requirements cascade confirmed via commercial team</div>
+                        <span class="mos-tag mos-tag-risk">Risk 5 · Disconnect in chain</span>
+                        <span class="mos-tag mos-tag-risk">Risk 6 · Free waste bins</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Knock-on impact</div>
+                        <div class="mos-measure">Material lifecycle cost savings quantified and shared with finance</div>
+                        <div class="mos-measure">Waste disposal costs reduced vs AO27 baseline</div>
+                        <div class="mos-measure">90% MCW recovery rate tracked and reported</div>
+                    </div>
+                </div>
+
+                <!-- AO29 row -->
+                <div class="mos-year-row mos-y3">
+                    <div class="mos-year-label">
+                        <div class="mos-year-tag">Year 3</div>
+                        <div class="mos-year-num">AO29</div>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Demonstrate</div>
+                        <div class="mos-measure">30% re-use target achieved across precinct scope</div>
+                        <div class="mos-measure">AO Standard (not just product list) in effect — scalable, enforceable, market-independent</div>
+                        <div class="mos-measure">Incremental plan delivered as committed across all 3 years</div>
+                        <span class="mos-tag mos-tag-risk">Risk 10 · Product-led vs standard</span>
+                        <span class="mos-tag mos-tag-finding">Finding 2 · Standard scalable</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Best practice</div>
+                        <div class="mos-measure">AO Material Standard formalised: certified, recyclable, E0/E1, water-based requirements</div>
+                        <div class="mos-measure">Aligned with IOC Olympic standards</div>
+                        <div class="mos-measure">Activity-based Scope 3 carbon accounting for site preparation established</div>
+                        <span class="mos-tag mos-tag-risk">Risk 16 · Supply reliability</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Best practice</div>
+                        <div class="mos-measure">Asset library operational via asset tracking system</div>
+                        <div class="mos-measure">Waste management prioritises recovery of high-value materials — not mixed waste default</div>
+                        <div class="mos-measure">DfD embedded as standard practice, not RFP exception</div>
+                        <span class="mos-tag mos-tag-finding">Finding 1 · DfD as default</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Contract delivery</div>
+                        <div class="mos-measure">Mandatory circular requirements enforced via contract — not guidance</div>
+                        <div class="mos-measure">3-year supply contracts with preferred suppliers evidencing scale and preferred pricing</div>
+                        <div class="mos-measure">Compliance reporting semi-automated — not reliant on manual tracking</div>
+                        <span class="mos-tag mos-tag-risk">Risk 15 · Reporting systems</span>
+                        <span class="mos-tag mos-tag-risk">Risk 17 · No asset tracking</span>
+                    </div>
+
+                    <div class="mos-cell">
+                        <div class="mos-cell-label">Direct + knock-on</div>
+                        <div class="mos-measure">AO positioned as circular economy leader among major sports events</div>
+                        <div class="mos-measure">Scope 3 Site Preparation carbon baseline published and improving</div>
+                        <div class="mos-measure">Evidence package ready for IOC/partner reporting and brand equity</div>
+                    </div>
+                </div>
+
+                <!-- Rationale note -->
+                <div class="mos-note-banner">
+                    <strong>Why these measures — and why in this order</strong>
+                    <ul>
+                        <li><strong>AO27's hardest measure is executive budget sign-off (Risk 1, priority 25).</strong> Without an agreed cost uplift range, RFP responses can come back and TA can't action them. This must be resolved before the RFP goes out.</li>
+                        <li><strong>GSO and ballpark as the AO27 focus zone</strong> is grounded in Risk 3 and Finding 11 — optional materials drive low adoption. The program needs at least one zone with a fully controlled, end-to-end circular outcome to build AO28 proof points.</li>
+                        <li><strong>The shift from product list to AO Standard is an AO29 measure, not AO27.</strong> Risk 10 and Finding 2 both flag that a product-led approach is fit for transition but cannot be a permanent control. Years 1–2 build the evidence to earn that shift.</li>
+                        <li><strong>The accountability column escalates deliberately</strong> — year 1: clauses in RFP; year 2: real cost consequences for non-compliance; year 3: mandatory enforcement. This is the only path through the free-waste-bins incentive problem (Risk 6).</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
