@@ -2821,7 +2821,8 @@
         <div id="findings-tab" class="tab-content">
             <div class="container">
                 <h2 style="font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">Where do we have leverage?</h2>
-                <p style="color: var(--text-light); margin-bottom: 30px; font-size: 1rem;">Lead findings and feedback from agencies, builders, suppliers and TA — what we can control, have influence over and what we must accept (for now)</p>
+                <p style="color: var(--text-light); margin-bottom: 30px; font-size: 1rem;">Lead findings and feedback from agencies, builders, suppliers and TA — what we can control, have influence over and what we must accept (for now) &nbsp;<span style="font-size:.8rem;color:#94a3b8;">· drag tiles to reclassify</span></p>
+                <div id="findings-toast"></div>
                 
                 <style>
                     .f-axis-track {
@@ -2883,6 +2884,20 @@
                     .f-tag-yes  { background:#d1fae5; color:#065f46; }
                     .f-tag-warn { background:#fef3c7; color:#92400e; }
                     .f-tag-no   { background:#fee2e2; color:#991b1b; }
+
+                    /* Drag-and-drop */
+                    .f-zone { border-radius:16px; padding:10px; min-height:180px; transition:background .2s, box-shadow .2s; }
+                    .f-zone-green.drag-over { background:rgba(5,150,105,0.06); box-shadow:0 0 0 2px #059669; }
+                    .f-zone-amber.drag-over { background:rgba(217,119,6,0.06);  box-shadow:0 0 0 2px #d97706; }
+                    .f-zone-red.drag-over   { background:rgba(220,38,38,0.06);  box-shadow:0 0 0 2px #dc2626; }
+                    .f-card { cursor:grab; user-select:none; }
+                    .f-card:active { cursor:grabbing; }
+                    .f-card.is-dragging { opacity:0.35; transform:scale(0.97); }
+                    .f-card::after { content:'⠿'; position:absolute; top:12px; left:12px; font-size:.8rem; color:#cbd5e1; pointer-events:none; }
+                    .f-card-eyebrow { padding-left:16px; }
+                    .zone-count { font-size:.65rem; font-weight:700; background:rgba(255,255,255,0.25); color:white; padding:2px 9px; border-radius:100px; margin-left:auto; }
+                    #findings-toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(16px); background:#1e293b; color:white; padding:9px 20px; border-radius:100px; font-size:.8rem; font-weight:600; opacity:0; transition:opacity .3s, transform .3s; pointer-events:none; white-space:nowrap; z-index:9999; }
+                    #findings-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
                 </style>
 
                 <!-- Spectrum axis -->
@@ -2896,13 +2911,14 @@
                 <div class="f-columns">
 
                     <!-- GREEN -->
-                    <div class="f-zone f-zone-green">
+                    <div class="f-zone f-zone-green" id="zone-green" data-zone="green">
                         <div class="f-zone-label">
                             <div class="f-zone-label-icon">✦</div>
                             <div class="f-zone-label-text"><h2>We can control</h2></div>
+                            <span class="zone-count" id="count-green"></span>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="1">
                             <div class="f-finding-num">1</div>
                             <div class="f-card-eyebrow">Design approach</div>
                             <div class="f-card-title">Materials aren't the problem — it's how we treat them</div>
@@ -2910,7 +2926,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Mandate Modular + Design for Disassembly in the RFP brief</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="2">
                             <div class="f-finding-num">2</div>
                             <div class="f-card-eyebrow">Policy & standard</div>
                             <div class="f-card-title">Set an AO Material Standard — not just a product list</div>
@@ -2922,7 +2938,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Take an incremental approach - AO27 = feasibility phase. Define the standard using builder + fire/safety feedback</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="3">
                             <div class="f-finding-num">3</div>
                             <div class="f-card-eyebrow">Leadership</div>
                             <div class="f-card-title">Bridge the audience gap — expand to designers and builders</div>
@@ -2932,13 +2948,14 @@
                     </div>
 
                     <!-- AMBER -->
-                    <div class="f-zone f-zone-amber">
+                    <div class="f-zone f-zone-amber" id="zone-amber" data-zone="amber">
                         <div class="f-zone-label">
                             <div class="f-zone-label-icon">⇌</div>
                             <div class="f-zone-label-text"><h2>Where there is tension</h2></div>
+                            <span class="zone-count" id="count-amber"></span>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="4">
                             <div class="f-finding-num">4</div>
                             <div class="f-card-eyebrow">Financial incentive</div>
                             <div class="f-card-title">Partners / agencies / builders prefer free mixed waste bins on-site</div>
@@ -2946,7 +2963,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Require Waste Management Plans in the RFP. Distribute disposal costs to those without a plan</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="5">
                             <div class="f-finding-num">5</div>
                             <div class="f-card-eyebrow">Operational constraint</div>
                             <div class="f-card-title">Bump-out time doubles for disassembly, reuse and storage</div>
@@ -2954,7 +2971,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Identify which evergreen elements suit reuse vs recovery. Test time vs labour trade-off with builders and TA</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="6">
                             <div class="f-finding-num">6</div>
                             <div class="f-card-eyebrow">Expectations</div>
                             <div class="f-card-title">Optimising the mix is a continuous feasibility study</div>
@@ -2963,7 +2980,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Set Phase III success measures upfront. Frame AO27 as year one of a multi-year program</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="10">
                             <div class="f-finding-num">10</div>
                             <div class="f-card-eyebrow">Budget constraint</div>
                             <div class="f-card-title">Partners/agencies/TA did not have budget approval for circular materials in AO26</div>
@@ -2971,7 +2988,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Apply targeted high-ROSI materials approach. Align with long-term design to establish evergreen vs annual scope. Precinct RFP as primary mechanism</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="11">
                             <div class="f-finding-num">11</div>
                             <div class="f-card-eyebrow">Adoption challenge</div>
                             <div class="f-card-title">Optional target materials unlikely to drive adoption</div>
@@ -2979,7 +2996,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Seek adoption in AO27 not just with Precincts but also TA delivery. Micro approach: Zone in on GSO and ball park as focus for success</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="12">
                             <div class="f-finding-num">12</div>
                             <div class="f-card-eyebrow">Delivery risk</div>
                             <div class="f-card-title">RFP accountability &amp; TA teams — how will MRV be supported?</div>
@@ -2993,13 +3010,14 @@
                     </div>
 
                     <!-- RED -->
-                    <div class="f-zone f-zone-red">
+                    <div class="f-zone f-zone-red" id="zone-red" data-zone="red">
                         <div class="f-zone-label">
                             <div class="f-zone-label-icon">↯</div>
                             <div class="f-zone-label-text"><h2>Hard to control</h2></div>
+                            <span class="zone-count" id="count-red"></span>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="7">
                             <div class="f-finding-num">7</div>
                             <div class="f-card-eyebrow">Material constraint</div>
                             <div class="f-card-title">MDF — unrecyclable, yet irreplaceable at its price point</div>
@@ -3011,7 +3029,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Limit use. Test alternatives: Compact Laminate, Melamine. Accept this is a multi-year shift</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="8">
                             <div class="f-finding-num">8</div>
                             <div class="f-card-eyebrow">Commercial friction</div>
                             <div class="f-card-title">Materials are where contractors make margin</div>
@@ -3019,7 +3037,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Consider offsetting via reduced overall build costs</div>
                         </div>
 
-                        <div class="f-card">
+                        <div class="f-card" draggable="true" data-id="9">
                             <div class="f-finding-num">9</div>
                             <div class="f-card-eyebrow">Technical constraint</div>
                             <div class="f-card-title">High-res facade graphics require composites with no circular equivalent</div>
@@ -3682,6 +3700,88 @@
 
         // Initialize risks table
         renderRisks();
+
+        // ── Findings drag-and-drop ──────────────────────────────────────────
+        (function () {
+            let draggedCard = null;
+            let sourceZone  = null;
+
+            const zoneNames = {
+                green: 'We can control',
+                amber: 'Where there is tension',
+                red:   'Hard to control'
+            };
+            const zoneColors = {
+                green: '#059669',
+                amber: '#d97706',
+                red:   '#dc2626'
+            };
+
+            function updateCounts() {
+                ['green', 'amber', 'red'].forEach(z => {
+                    const el = document.getElementById('count-' + z);
+                    if (el) el.textContent = document.getElementById('zone-' + z).querySelectorAll('.f-card').length;
+                });
+            }
+
+            function showToast(msg, color) {
+                const t = document.getElementById('findings-toast');
+                if (!t) return;
+                t.textContent = msg;
+                t.style.borderLeft = '4px solid ' + color;
+                t.classList.add('show');
+                clearTimeout(t._timer);
+                t._timer = setTimeout(() => t.classList.remove('show'), 2200);
+            }
+
+            function initCards() {
+                document.querySelectorAll('.f-zone .f-card').forEach(card => {
+                    card.addEventListener('dragstart', onDragStart);
+                    card.addEventListener('dragend',   onDragEnd);
+                });
+            }
+
+            function onDragStart(e) {
+                draggedCard = e.currentTarget;
+                sourceZone  = draggedCard.closest('.f-zone') ? draggedCard.closest('.f-zone').dataset.zone : null;
+                setTimeout(() => draggedCard && draggedCard.classList.add('is-dragging'), 10);
+                e.dataTransfer.effectAllowed = 'move';
+            }
+
+            function onDragEnd() {
+                if (draggedCard) draggedCard.classList.remove('is-dragging');
+                document.querySelectorAll('.f-zone').forEach(z => z.classList.remove('drag-over'));
+                draggedCard = null;
+                sourceZone  = null;
+            }
+
+            document.querySelectorAll('.f-zone').forEach(zone => {
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    if (draggedCard && zone.dataset.zone !== (draggedCard.closest('.f-zone') || {}).dataset.zone) {
+                        document.querySelectorAll('.f-zone').forEach(z => z.classList.remove('drag-over'));
+                        zone.classList.add('drag-over');
+                    }
+                });
+
+                zone.addEventListener('dragleave', e => {
+                    if (!zone.contains(e.relatedTarget)) zone.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    if (!draggedCard || zone.dataset.zone === sourceZone) return;
+                    zone.appendChild(draggedCard);
+                    updateCounts();
+                    showToast('Finding moved → ' + zoneNames[zone.dataset.zone], zoneColors[zone.dataset.zone]);
+                });
+            });
+
+            initCards();
+            updateCounts();
+        })();
     </script>
 </body>
 </html>
