@@ -48,9 +48,9 @@
         }
 
         .main-container {
-            max-width: 2200px;
+            max-width: 2600px;
             margin: 0 auto;
-            overflow: hidden;
+            overflow: visible;
             border-radius: 16px;
             background: white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -102,7 +102,7 @@
         }
 
         .container {
-            min-width: 1350px;
+            min-width: 2459px;
             background: var(--card);
             border-radius: 16px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -168,12 +168,13 @@
             max-height: 1200px;
             border: 1px solid var(--border);
             border-radius: 12px;
+            position: relative;
         }
 
         .gantt-chart {
             display: grid;
-            grid-template-columns: 342px 46px 90px 60px repeat(15, 113px);
-            min-width: 2233px;
+            grid-template-columns: 342px 46px 90px 60px repeat(17, 113px);
+            min-width: 2459px;
         }
 
         .timeline-header {
@@ -197,6 +198,8 @@
         .week-header:first-child {
             text-align: left;
             padding-left: 24px;
+            left: 0;
+            z-index: 30;
         }
 
         .phase-row {
@@ -228,6 +231,9 @@
             background: white;
             display: flex;
             flex-direction: column;
+            position: sticky;
+            left: 0;
+            z-index: 5;
             justify-content: center;
         }
 
@@ -770,7 +776,7 @@
         <!-- Top Banner Header -->
         <div style="background: linear-gradient(135deg, #1E2886 0%, #2d3b9e 100%); padding: 40px 60px; margin: -30px -30px 30px -30px; border-radius: 16px 16px 0 0;">
             <h1 style="color: white; font-size: 2.5rem; font-weight: 700; margin: 0 0 8px 0; text-align: center;">AO Materials Program Dashboard</h1>
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin: 0; text-align: center; font-weight: 400;">Responsible Materials Research & Implementation | Last update 31-Mar-26</p>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin: 0; text-align: center; font-weight: 400;">Responsible Materials Research & Implementation | Last update 24-Apr-26</p>
         </div>
 
         <!-- Tab Navigation -->
@@ -778,7 +784,6 @@
             <button class="tab-button active" onclick="switchTab('schedule')">Project Schedule</button>
             <button class="tab-button" onclick="switchTab('risks')">Risk Register</button>
             <button class="tab-button" onclick="switchTab('findings')">Findings</button>
-            <button class="tab-button" onclick="switchTab('measures')">Measures of Success</button>
         </div>
 
         <!-- Schedule Tab -->
@@ -925,12 +930,14 @@
                         <div class="week-header">Week 5<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">9-Mar</span></div>
                         <div class="week-header">Week 6<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">16-Mar</span></div>
                         <div class="week-header">Week 7<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">23-Mar</span></div>
-                        <div class="week-header current-week">★ Week 8<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">30-Mar (Now)</span></div>
+                        <div class="week-header">Week 8<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">30-Mar</span></div>
                         <div class="week-header">Week 9<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">13-Apr</span></div>
                         <div class="week-header">Week 10<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">20-Apr</span></div>
-                        <div class="week-header">Week 11<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">27-Apr</span></div>
+                        <div class="week-header current-week">★ Week 11<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">27-Apr (Now)</span></div>
                         <div class="week-header">Week 12<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">4-May</span></div>
-                        <div class="week-header">Week 13+<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">11-May+</span></div>
+                        <div class="week-header">Week 13<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">11-May</span></div>
+                        <div class="week-header">Week 14<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">18-May</span></div>
+                        <div class="week-header">Week 15<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">25-May</span></div>
                         <div class="week-header">Post AO27</div>
 
                         <!-- PHASE 0: Responsible Materials RFP Integration Scope & Approval -->
@@ -960,6 +967,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -983,6 +992,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1012,6 +1023,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1037,6 +1050,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1058,6 +1073,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1097,6 +1114,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1123,17 +1142,19 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row in-progress">
+                        <div class="task-row">
                             <div class="task-cell">
                                 <div class="task-name">Builder consultation: JT Dodd - modular design brief</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">JT Dodd (Josh)</div>
-                            <div class="status-cell"><span class="status-in-progress">Follow up</span></div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar phase2">10/02 JTDodd</div>
@@ -1146,6 +1167,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1175,6 +1198,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1198,6 +1223,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1227,6 +1254,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1250,6 +1279,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1279,6 +1310,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1302,6 +1335,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1331,6 +1366,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1357,6 +1394,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1368,7 +1407,7 @@
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Dave/ Phil</div>
-                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1383,6 +1422,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1393,7 +1434,7 @@
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell"></div>
-                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1404,6 +1445,8 @@
                             </div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1433,6 +1476,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1456,6 +1501,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1486,6 +1533,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1496,7 +1545,7 @@
                             </div>
                             <div class="lead-cell"></div>
                             <div class="contrib-cell"></div>
-                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
+                            <div class="status-cell"><span class="status-done">Done</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1508,6 +1557,8 @@
                             </div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1540,6 +1591,8 @@
                                 <div class="bar phase3">Revision</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1563,6 +1616,8 @@
                             <div class="timeline-cell">
                                 <div class="bar phase3">Revision</div>
                             </div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1588,6 +1643,8 @@
                                 <div class="bar phase3">Revision</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1608,6 +1665,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1637,6 +1696,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1660,6 +1721,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1687,6 +1750,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1707,6 +1772,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1735,6 +1802,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1756,6 +1825,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1784,6 +1855,8 @@
                                 <div class="bar phase3">Safety approval</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1811,6 +1884,8 @@
                                 <div class="bar phase3">Adoption plan</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1831,6 +1906,8 @@
                                 <div class="bar phase3">Dynamic html tool</div>
                             </div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1854,6 +1931,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1883,6 +1962,8 @@
                                 <div class="bar phase3">Alignment/ approval</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -1908,6 +1989,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1937,11 +2020,13 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                                                <div class="task-row in-progress">
+                        <div class="task-row in-progress">
                             <div class="task-cell">
                                 <div class="task-name">AO procurement pricing and preferred supplier list/ framework</div>
                             </div>
@@ -1958,9 +2043,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
-                                <div class="bar phase5">Pricing analysis</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -1986,6 +2072,8 @@
                             <div class="timeline-cell span-2">
                                 <div class="bar phase5">Agency materials</div>
                             </div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2013,6 +2101,8 @@
                                 <div class="bar phase5">Alignment/ approval</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2039,6 +2129,8 @@
                                 <div class="bar milestone">Milestone:  Preferred  suppliers  </div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2047,7 +2139,7 @@
                             <div class="phase-header">2.1 Consultation: Agency &amp; TA Materials feasibility</div>
                         </div>
 
-                                                <div class="task-row">
+                        <div class="task-row">
                             <div class="task-cell">
                                 <div class="task-name">TA consultation on materials during RFP</div>
                             </div>
@@ -2065,15 +2157,16 @@
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
-                                <div class="bar phase5">TA feedback</div>
-                            </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell">
                                 <div class="task-name">Agency/ builder consultation on materials during RFP</div>
                             </div>
@@ -2090,9 +2183,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
+                            <div class="timeline-cell span-3">
                                 <div class="bar phase5">Agency feedback</div>
                             </div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2118,6 +2212,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2126,7 +2222,7 @@
                             <div class="phase-header">PHASE 3: Business Case Development</div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell">
                                 <div class="task-name">Warehouse capacity and costs (TBC)</div>
                             </div>
@@ -2140,12 +2236,13 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell span-2">
                                 <div class="bar phase6">Warehouse capacity</div>
                             </div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2173,6 +2270,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2197,17 +2296,19 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row in-progress">
                             <div class="task-cell">
                                 <div class="task-name">TCO analysis, storage/ warehouse capacity, cost modelling &amp; ROSI</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Finance Team</div>
-                            <div class="status-cell"></div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2217,22 +2318,23 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
+                            <div class="timeline-cell span-3">
                                 <div class="bar phase6">Financial modelling</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row in-progress">
                             <div class="task-cell">
-                                <div class="task-name">Business case narrative<br>+ Social license to operate</div>
+                                <div class="task-name">Business case narrative</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Matt</div>
-                            <div class="status-cell"><span class="status-in-progress">TBC</span></div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2243,15 +2345,16 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
+                            <div class="timeline-cell span-3">
                                 <div class="bar phase6">Business case outline</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
-                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell key-task">
                                 <div class="task-name">Design Sync: Draft business case for review</div>
                             </div>
@@ -2269,21 +2372,25 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar phase6">Alignment/ approval</div>
                             </div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                         </div>
 
-                                                <div class="task-row">
+                                                                        <div class="task-row">
                             <div class="task-cell">
                                 <div class="task-name">MILESTONE: deliverable - business case</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Matt</div>
                             <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2328,6 +2435,8 @@
                                 <div class="bar phase6">Materials spec for RFP shortlist </div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2354,6 +2463,8 @@
                                 <div class="bar milestone">Milestones: Final materials spec</div>
                             </div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2362,9 +2473,9 @@
                             <div class="phase-header">PHASE 4: Adoption: Agency/ builder support &amp; education</div>
                         </div>
 
-                                                                        <div class="task-row">
+                                                <div class="task-row">
                             <div class="task-cell">
-                                <div class="task-name">2026 Circular design Advocates kick off</div>
+                                <div class="task-name">2026 Circualr design Advocates kick off</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Matt</div>
@@ -2379,18 +2490,19 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell"></div>
-                            <div class="timeline-cell">
+                            <div class="timeline-cell span-2">
                                 <div class="bar phase4-teal">TBC</div>
                             </div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
 
-                                                <div class="task-row in-progress">
+                                                                        <div class="task-row in-progress">
                             <div class="task-cell">
-                                <div class="task-name">Ecosystem engagement (agencies/ builders/ designers)<br>Living feasibility study</div>
+                                <div class="task-name">Ecosystem engagement (agencies/ builders/ designers)</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell"></div>
@@ -2406,8 +2518,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell span-2">
-                                <div class="bar phase4-teal">Engagement plan</div>
+                                <div class="bar phase-grey">Engagement plan</div>
                             </div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2420,6 +2534,8 @@
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Vange/ B</div>
                             <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2458,6 +2574,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar phase4-teal">TA PMs briefing</div>
                             </div>
@@ -2472,6 +2590,8 @@
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Bianca</div>
                             <div class="status-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2510,6 +2630,8 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell">
                                 <div class="bar phase4-teal">Supplier day</div>
                             </div>
@@ -2517,13 +2639,13 @@
                             <div class="timeline-cell"></div>
                         </div>
 
-                                                <div class="task-row">
+                                                                        <div class="task-row in-progress">
                             <div class="task-cell">
                                 <div class="task-name">Closed loop materials &amp; programs &amp; waste ops</div>
                             </div>
                             <div class="lead-cell">Meg</div>
                             <div class="contrib-cell">Matt/ Justine</div>
-                            <div class="status-cell"></div>
+                            <div class="status-cell"><span class="status-in-progress">In progress</span></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2534,9 +2656,10 @@
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
-                            <div class="timeline-cell span-2">
+                            <div class="timeline-cell span-3">
                                 <div class="bar phase4-teal">Closed loop</div>
                             </div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2566,6 +2689,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                         </div>
@@ -2587,6 +2712,8 @@
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
+                            <div class="timeline-cell"></div>
+                                                        <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
                                                         <div class="timeline-cell"></div>
                             <div class="timeline-cell"></div>
@@ -2821,8 +2948,7 @@
         <div id="findings-tab" class="tab-content">
             <div class="container">
                 <h2 style="font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">Where do we have leverage?</h2>
-                <p style="color: var(--text-light); margin-bottom: 30px; font-size: 1rem;">Lead findings and feedback from agencies, builders, suppliers and TA — what we can control, have influence over and what we must accept (for now) &nbsp;<span style="font-size:.8rem;color:#94a3b8;">· drag tiles to reclassify</span></p>
-                <div id="findings-toast"></div>
+                <p style="color: var(--text-light); margin-bottom: 30px; font-size: 1rem;">Lead findings and feedback from agencies, builders, suppliers and TA — what we can control, have influence over and what we must accept (for now)</p>
                 
                 <style>
                     .f-axis-track {
@@ -2884,20 +3010,6 @@
                     .f-tag-yes  { background:#d1fae5; color:#065f46; }
                     .f-tag-warn { background:#fef3c7; color:#92400e; }
                     .f-tag-no   { background:#fee2e2; color:#991b1b; }
-
-                    /* Drag-and-drop */
-                    .f-zone { border-radius:16px; padding:10px; min-height:180px; transition:background .2s, box-shadow .2s; }
-                    .f-zone-green.drag-over { background:rgba(5,150,105,0.06); box-shadow:0 0 0 2px #059669; }
-                    .f-zone-amber.drag-over { background:rgba(217,119,6,0.06);  box-shadow:0 0 0 2px #d97706; }
-                    .f-zone-red.drag-over   { background:rgba(220,38,38,0.06);  box-shadow:0 0 0 2px #dc2626; }
-                    .f-card { cursor:grab; user-select:none; }
-                    .f-card:active { cursor:grabbing; }
-                    .f-card.is-dragging { opacity:0.35; transform:scale(0.97); }
-                    .f-card::after { content:'⠿'; position:absolute; top:12px; left:12px; font-size:.8rem; color:#cbd5e1; pointer-events:none; }
-                    .f-card-eyebrow { padding-left:16px; }
-                    .zone-count { font-size:.65rem; font-weight:700; background:rgba(255,255,255,0.25); color:white; padding:2px 9px; border-radius:100px; margin-left:auto; }
-                    #findings-toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(16px); background:#1e293b; color:white; padding:9px 20px; border-radius:100px; font-size:.8rem; font-weight:600; opacity:0; transition:opacity .3s, transform .3s; pointer-events:none; white-space:nowrap; z-index:9999; }
-                    #findings-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
                 </style>
 
                 <!-- Spectrum axis -->
@@ -2911,14 +3023,13 @@
                 <div class="f-columns">
 
                     <!-- GREEN -->
-                    <div class="f-zone f-zone-green" id="zone-green" data-zone="green">
+                    <div class="f-zone f-zone-green">
                         <div class="f-zone-label">
                             <div class="f-zone-label-icon">✦</div>
                             <div class="f-zone-label-text"><h2>We can control</h2></div>
-                            <span class="zone-count" id="count-green"></span>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="1">
+                        <div class="f-card">
                             <div class="f-finding-num">1</div>
                             <div class="f-card-eyebrow">Design approach</div>
                             <div class="f-card-title">Materials aren't the problem — it's how we treat them</div>
@@ -2926,7 +3037,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Mandate Modular + Design for Disassembly in the RFP brief</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="2">
+                        <div class="f-card">
                             <div class="f-finding-num">2</div>
                             <div class="f-card-eyebrow">Policy & standard</div>
                             <div class="f-card-title">Set an AO Material Standard — not just a product list</div>
@@ -2938,7 +3049,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Take an incremental approach - AO27 = feasibility phase. Define the standard using builder + fire/safety feedback</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="3">
+                        <div class="f-card">
                             <div class="f-finding-num">3</div>
                             <div class="f-card-eyebrow">Leadership</div>
                             <div class="f-card-title">Bridge the audience gap — expand to designers and builders</div>
@@ -2948,14 +3059,13 @@
                     </div>
 
                     <!-- AMBER -->
-                    <div class="f-zone f-zone-amber" id="zone-amber" data-zone="amber">
+                    <div class="f-zone f-zone-amber">
                         <div class="f-zone-label">
                             <div class="f-zone-label-icon">⇌</div>
                             <div class="f-zone-label-text"><h2>Where there is tension</h2></div>
-                            <span class="zone-count" id="count-amber"></span>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="4">
+                        <div class="f-card">
                             <div class="f-finding-num">4</div>
                             <div class="f-card-eyebrow">Financial incentive</div>
                             <div class="f-card-title">Partners / agencies / builders prefer free mixed waste bins on-site</div>
@@ -2963,7 +3073,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Require Waste Management Plans in the RFP. Distribute disposal costs to those without a plan</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="5">
+                        <div class="f-card">
                             <div class="f-finding-num">5</div>
                             <div class="f-card-eyebrow">Operational constraint</div>
                             <div class="f-card-title">Bump-out time doubles for disassembly, reuse and storage</div>
@@ -2971,7 +3081,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Identify which evergreen elements suit reuse vs recovery. Test time vs labour trade-off with builders and TA</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="6">
+                        <div class="f-card">
                             <div class="f-finding-num">6</div>
                             <div class="f-card-eyebrow">Expectations</div>
                             <div class="f-card-title">Optimising the mix is a continuous feasibility study</div>
@@ -2980,7 +3090,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Set Phase III success measures upfront. Frame AO27 as year one of a multi-year program</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="10">
+                        <div class="f-card">
                             <div class="f-finding-num">10</div>
                             <div class="f-card-eyebrow">Budget constraint</div>
                             <div class="f-card-title">Partners/agencies/TA did not have budget approval for circular materials in AO26</div>
@@ -2988,36 +3098,23 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Apply targeted high-ROSI materials approach. Align with long-term design to establish evergreen vs annual scope. Precinct RFP as primary mechanism</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="11">
+                        <div class="f-card">
                             <div class="f-finding-num">11</div>
                             <div class="f-card-eyebrow">Adoption challenge</div>
                             <div class="f-card-title">Optional target materials unlikely to drive adoption</div>
                             <div class="f-card-body">Where materials are optional and not required, adoption by designers/agencies/builders is expected to be low.</div>
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Seek adoption in AO27 not just with Precincts but also TA delivery. Micro approach: Zone in on GSO and ball park as focus for success</div>
                         </div>
-
-                        <div class="f-card" draggable="true" data-id="12">
-                            <div class="f-finding-num">12</div>
-                            <div class="f-card-eyebrow">Delivery risk</div>
-                            <div class="f-card-title">RFP accountability &amp; TA teams — how will MRV be supported?</div>
-                            <div class="f-card-body">How monitoring, verification and reporting (MRV) of circular outcomes will be supported is an open risk. There is a current lack of systems to track and report asset lifecycle.</div>
-                            <div class="f-tag-row">
-                                <span class="f-tag f-tag-no">✕ No asset tracking system</span>
-                                <span class="f-tag f-tag-warn">! Open risk</span>
-                            </div>
-                            <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Define what needs to be measured, by who and how. Explore TA Field Services return work orders as an interim tracking mechanism or smartsheet asset library.</div>
-                        </div>
                     </div>
 
                     <!-- RED -->
-                    <div class="f-zone f-zone-red" id="zone-red" data-zone="red">
+                    <div class="f-zone f-zone-red">
                         <div class="f-zone-label">
                             <div class="f-zone-label-icon">↯</div>
                             <div class="f-zone-label-text"><h2>Hard to control</h2></div>
-                            <span class="zone-count" id="count-red"></span>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="7">
+                        <div class="f-card">
                             <div class="f-finding-num">7</div>
                             <div class="f-card-eyebrow">Material constraint</div>
                             <div class="f-card-title">MDF — unrecyclable, yet irreplaceable at its price point</div>
@@ -3029,7 +3126,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Limit use. Test alternatives: Compact Laminate, Melamine. Accept this is a multi-year shift</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="8">
+                        <div class="f-card">
                             <div class="f-finding-num">8</div>
                             <div class="f-card-eyebrow">Commercial friction</div>
                             <div class="f-card-title">Materials are where contractors make margin</div>
@@ -3037,7 +3134,7 @@
                             <div class="f-card-approach"><span style="font-weight:800;font-size:.8rem;flex-shrink:0;">→</span> Consider offsetting via reduced overall build costs</div>
                         </div>
 
-                        <div class="f-card" draggable="true" data-id="9">
+                        <div class="f-card">
                             <div class="f-finding-num">9</div>
                             <div class="f-card-eyebrow">Technical constraint</div>
                             <div class="f-card-title">High-res facade graphics require composites with no circular equivalent</div>
@@ -3048,332 +3145,6 @@
                     </div>
 
                 </div>
-            </div>
-        </div>
-
-        <!-- Measures of Success Tab -->
-        <div id="measures-tab" class="tab-content">
-            <div class="container">
-                <h2 style="font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 10px;">Measures of Success</h2>
-                <p style="color: var(--text-light); margin-bottom: 24px; font-size: 1rem;">Recommended success criteria across the three-year incremental framework — grounded in findings and risk register. GSO and ballpark as the AO27 focus zone.</p>
-
-                <style>
-                    .mos-year-chain {
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        margin-bottom: 28px;
-                        flex-wrap: wrap;
-                    }
-                    .mos-year-pill {
-                        padding: 5px 18px;
-                        border-radius: 100px;
-                        font-size: 0.8rem;
-                        font-weight: 700;
-                        letter-spacing: 0.5px;
-                    }
-                    .mos-pill-y1 { background: rgba(2,136,204,0.12); color: #0288CC; border: 1px solid rgba(2,136,204,0.3); }
-                    .mos-pill-y2 { background: rgba(16,185,129,0.12); color: #059669; border: 1px solid rgba(16,185,129,0.3); }
-                    .mos-pill-y3 { background: rgba(167,139,250,0.12); color: #6d28d9; border: 1px solid rgba(167,139,250,0.3); }
-                    .mos-arrow { color: #94a3b8; font-size: 1.1rem; }
-
-                    .mos-col-headers {
-                        display: grid;
-                        grid-template-columns: 100px repeat(5, 1fr);
-                        gap: 8px;
-                        margin-bottom: 8px;
-                        padding-bottom: 10px;
-                        border-bottom: 2px solid #0288CC;
-                    }
-                    .mos-col-head {
-                        font-size: 0.67rem;
-                        font-weight: 700;
-                        letter-spacing: 0.8px;
-                        text-transform: uppercase;
-                        color: #64748b;
-                        padding: 0 6px;
-                    }
-                    .mos-col-head:first-child { color: #0288CC; }
-
-                    .mos-year-row {
-                        display: grid;
-                        grid-template-columns: 100px repeat(5, 1fr);
-                        gap: 8px;
-                        margin-bottom: 10px;
-                        align-items: stretch;
-                    }
-
-                    .mos-year-label {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: flex-start;
-                        padding-top: 12px;
-                        padding-right: 6px;
-                    }
-                    .mos-year-tag {
-                        font-size: 0.6rem;
-                        font-weight: 700;
-                        letter-spacing: 1px;
-                        text-transform: uppercase;
-                        color: #94a3b8;
-                        margin-bottom: 2px;
-                    }
-                    .mos-year-num {
-                        font-size: 1.6rem;
-                        font-weight: 700;
-                        line-height: 1;
-                    }
-                    .mos-y1 .mos-year-num { color: #0288CC; }
-                    .mos-y2 .mos-year-num { color: #059669; }
-                    .mos-y3 .mos-year-num { color: #6d28d9; }
-
-                    .mos-cell {
-                        border-radius: 12px;
-                        padding: 12px 14px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 5px;
-                        border: 1.5px solid #e2e8f0;
-                        background: #f8fafc;
-                    }
-                    .mos-y1 .mos-cell { border-color: rgba(2,136,204,0.2); }
-                    .mos-y2 .mos-cell { border-color: rgba(16,185,129,0.2); }
-                    .mos-y3 .mos-cell { border-color: rgba(167,139,250,0.2); }
-
-                    .mos-cell-label {
-                        font-size: 0.6rem;
-                        font-weight: 700;
-                        letter-spacing: 0.8px;
-                        text-transform: uppercase;
-                        margin-bottom: 2px;
-                    }
-                    .mos-y1 .mos-cell-label { color: #0288CC; }
-                    .mos-y2 .mos-cell-label { color: #059669; }
-                    .mos-y3 .mos-cell-label { color: #6d28d9; }
-
-                    .mos-measure {
-                        font-size: 0.75rem;
-                        line-height: 1.5;
-                        color: #334155;
-                        display: flex;
-                        gap: 5px;
-                        align-items: flex-start;
-                    }
-                    .mos-measure::before {
-                        content: "→";
-                        flex-shrink: 0;
-                        color: #94a3b8;
-                        font-size: 0.7rem;
-                        margin-top: 1px;
-                    }
-
-                    .mos-tag {
-                        display: inline-flex;
-                        align-items: center;
-                        font-size: 0.62rem;
-                        font-weight: 700;
-                        padding: 2px 7px;
-                        border-radius: 100px;
-                        margin-top: 4px;
-                        align-self: flex-start;
-                        white-space: nowrap;
-                    }
-                    .mos-tag-risk { background: #fee2e2; color: #991b1b; }
-                    .mos-tag-finding { background: #dbeafe; color: #1e40af; }
-
-                    .mos-note-banner {
-                        margin-top: 28px;
-                        padding: 16px 20px;
-                        border-radius: 12px;
-                        background: #f0f9ff;
-                        border: 1.5px solid rgba(2,136,204,0.25);
-                        font-size: 0.82rem;
-                        line-height: 1.65;
-                        color: #334155;
-                    }
-                    .mos-note-banner strong { color: #0f172a; }
-                    .mos-note-banner ul { margin: 8px 0 0 16px; }
-                    .mos-note-banner li { margin-bottom: 5px; }
-                </style>
-
-                <!-- Year chain -->
-                <div class="mos-year-chain">
-                    <span class="mos-year-pill mos-pill-y1">AO27 · Year 1</span>
-                    <span class="mos-arrow">→</span>
-                    <span class="mos-year-pill mos-pill-y2">AO28 · Year 2</span>
-                    <span class="mos-arrow">→</span>
-                    <span class="mos-year-pill mos-pill-y3">AO29 · Year 3</span>
-                    <span style="margin-left: 8px; font-size: 0.75rem; color: #94a3b8;">GSO + ballpark as AO27 focus zone</span>
-                </div>
-
-                <!-- Column headers -->
-                <div class="mos-col-headers">
-                    <div class="mos-col-head">Year</div>
-                    <div class="mos-col-head">01 · Targets</div>
-                    <div class="mos-col-head">02 · Materials</div>
-                    <div class="mos-col-head">03 · Methods</div>
-                    <div class="mos-col-head">04 · Accountability</div>
-                    <div class="mos-col-head">05 · Impact</div>
-                </div>
-
-                <!-- AO27 row -->
-                <div class="mos-year-row mos-y1">
-                    <div class="mos-year-label">
-                        <div class="mos-year-tag">Year 1</div>
-                        <div class="mos-year-num">AO27</div>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Start here</div>
-                        <div class="mos-measure">Baseline for circular materials use in GSO + ballpark established and documented</div>
-                        <div class="mos-measure">Finance + executive sign-off on tolerable cost uplift range for year one</div>
-                        <div class="mos-measure">Reuse and recovery rates formally tracked for the first time</div>
-                        <span class="mos-tag mos-tag-risk">Risk 1 · Budget alignment</span>
-                        <span class="mos-tag mos-tag-finding">Finding 6 · Exec buy-in</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Zone of focus</div>
-                        <div class="mos-measure">Zone of Focus materials list approved by TA Fire/Safety</div>
-                        <div class="mos-measure">≥3 evergreen structural systems identified, specced and priced</div>
-                        <div class="mos-measure">MDF use quantified and capped — alternatives (compact laminate, melamine) under test</div>
-                        <span class="mos-tag mos-tag-finding">Finding 7 · MDF constraint</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Practices</div>
-                        <div class="mos-measure">DfD + modular design mandated in precinct RFP brief — not optional</div>
-                        <div class="mos-measure">Waste Management Plans required from all agencies and builders in RFP</div>
-                        <div class="mos-measure">Bump-out time increase vs. labour cost trade-off tested with ≥1 builder</div>
-                        <span class="mos-tag mos-tag-risk">Risk 4 · Bump-out time</span>
-                        <span class="mos-tag mos-tag-finding">Finding 4 · Waste bins</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Expectations</div>
-                        <div class="mos-measure">Responsible materials clauses embedded in precinct RFP — primary compliance mechanism</div>
-                        <div class="mos-measure">Asset tracking method agreed with TA (even if manual via Field Services)</div>
-                        <div class="mos-measure">TA PMs briefed with materials compliance process</div>
-                        <span class="mos-tag mos-tag-risk">Risk 9 · Compliance measurement</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Direct impact</div>
-                        <div class="mos-measure">≥1 precinct zone delivers circular outcome documented end-to-end</div>
-                        <div class="mos-measure">Mixed waste stream in focus zones reduced vs AO26 baseline</div>
-                        <div class="mos-measure">Business case for year 2 evidenced with AO27 data</div>
-                        <span class="mos-tag mos-tag-finding">Finding 3 · Audience gap</span>
-                    </div>
-                </div>
-
-                <!-- AO28 row -->
-                <div class="mos-year-row mos-y2">
-                    <div class="mos-year-label">
-                        <div class="mos-year-tag">Year 2</div>
-                        <div class="mos-year-num">AO28</div>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Year 1+</div>
-                        <div class="mos-measure">20% re-use target hit and evidenced by asset tracking data</div>
-                        <div class="mos-measure">Evergreen scope expanded beyond GSO/ballpark to additional precinct zones</div>
-                        <div class="mos-measure">Incremental plan on track per agency/builder delivery reports</div>
-                        <span class="mos-tag mos-tag-risk">Risk 3 · Optional = low adoption</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Expand zone</div>
-                        <div class="mos-measure">Preferred supplier pricing active for ≥3 target materials</div>
-                        <div class="mos-measure">≥1 MDF alternative deployed in a live precinct application</div>
-                        <div class="mos-measure">Evergreen vs annual graphic scope defined across facade systems</div>
-                        <span class="mos-tag mos-tag-risk">Risk 13 · Composite facades</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Competence</div>
-                        <div class="mos-measure">Reused assets tracked across bump-in/bump-out cycle</div>
-                        <div class="mos-measure">Labour cost of disassembly factored into agency and builder quotes</div>
-                        <div class="mos-measure">High-value composite structures audited for material recovery</div>
-                        <span class="mos-tag mos-tag-risk">Risk 2 · Cost vs circular</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Contract delivery</div>
-                        <div class="mos-measure">Agencies + builders demonstrate delivery against incremental plan in AO28 contract</div>
-                        <div class="mos-measure">Waste costs distributed to agencies/builders without approved Waste Management Plans</div>
-                        <div class="mos-measure">Partner/designer circular requirements cascade confirmed via commercial team</div>
-                        <span class="mos-tag mos-tag-risk">Risk 5 · Disconnect in chain</span>
-                        <span class="mos-tag mos-tag-risk">Risk 6 · Free waste bins</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Knock-on impact</div>
-                        <div class="mos-measure">Material lifecycle cost savings quantified and shared with finance</div>
-                        <div class="mos-measure">Waste disposal costs reduced vs AO27 baseline</div>
-                        <div class="mos-measure">90% MCW recovery rate tracked and reported</div>
-                    </div>
-                </div>
-
-                <!-- AO29 row -->
-                <div class="mos-year-row mos-y3">
-                    <div class="mos-year-label">
-                        <div class="mos-year-tag">Year 3</div>
-                        <div class="mos-year-num">AO29</div>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Demonstrate</div>
-                        <div class="mos-measure">30% re-use target achieved across precinct scope</div>
-                        <div class="mos-measure">AO Standard (not just product list) in effect — scalable, enforceable, market-independent</div>
-                        <div class="mos-measure">Incremental plan delivered as committed across all 3 years</div>
-                        <span class="mos-tag mos-tag-risk">Risk 10 · Product-led vs standard</span>
-                        <span class="mos-tag mos-tag-finding">Finding 2 · Standard scalable</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Best practice</div>
-                        <div class="mos-measure">AO Material Standard formalised: certified, recyclable, E0/E1, water-based requirements</div>
-                        <div class="mos-measure">Aligned with IOC Olympic standards</div>
-                        <div class="mos-measure">Activity-based Scope 3 carbon accounting for site preparation established</div>
-                        <span class="mos-tag mos-tag-risk">Risk 16 · Supply reliability</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Best practice</div>
-                        <div class="mos-measure">Asset library operational via asset tracking system</div>
-                        <div class="mos-measure">Waste management prioritises recovery of high-value materials — not mixed waste default</div>
-                        <div class="mos-measure">DfD embedded as standard practice, not RFP exception</div>
-                        <span class="mos-tag mos-tag-finding">Finding 1 · DfD as default</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Contract delivery</div>
-                        <div class="mos-measure">Mandatory circular requirements enforced via contract — not guidance</div>
-                        <div class="mos-measure">3-year supply contracts with preferred suppliers evidencing scale and preferred pricing</div>
-                        <div class="mos-measure">Compliance reporting semi-automated — not reliant on manual tracking</div>
-                        <span class="mos-tag mos-tag-risk">Risk 15 · Reporting systems</span>
-                        <span class="mos-tag mos-tag-risk">Risk 17 · No asset tracking</span>
-                    </div>
-
-                    <div class="mos-cell">
-                        <div class="mos-cell-label">Direct + knock-on</div>
-                        <div class="mos-measure">AO positioned as circular economy leader among major sports events</div>
-                        <div class="mos-measure">Scope 3 Site Preparation carbon baseline published and improving</div>
-                        <div class="mos-measure">Evidence package ready for IOC/partner reporting and brand equity</div>
-                    </div>
-                </div>
-
-                <!-- Rationale note -->
-                <div class="mos-note-banner">
-                    <strong>Why these measures — and why in this order</strong>
-                    <ul>
-                        <li><strong>AO27's hardest measure is executive budget sign-off (Risk 1, priority 25).</strong> Without an agreed cost uplift range, RFP responses can come back and TA can't action them. This must be resolved before the RFP goes out.</li>
-                        <li><strong>GSO and ballpark as the AO27 focus zone</strong> is grounded in Risk 3 and Finding 11 — optional materials drive low adoption. The program needs at least one zone with a fully controlled, end-to-end circular outcome to build AO28 proof points.</li>
-                        <li><strong>The shift from product list to AO Standard is an AO29 measure, not AO27.</strong> Risk 10 and Finding 2 both flag that a product-led approach is fit for transition but cannot be a permanent control. Years 1–2 build the evidence to earn that shift.</li>
-                        <li><strong>The accountability column escalates deliberately</strong> — year 1: clauses in RFP; year 2: real cost consequences for non-compliance; year 3: mandatory enforcement. This is the only path through the free-waste-bins incentive problem (Risk 6).</li>
-                    </ul>
-                </div>
-
             </div>
         </div>
 
@@ -3701,86 +3472,37 @@
         // Initialize risks table
         renderRisks();
 
-        // ── Findings drag-and-drop ──────────────────────────────────────────
-        (function () {
-            let draggedCard = null;
-            let sourceZone  = null;
+        // ── Highlight Week 11 column ─────────────────────────────────────────
+        (function highlightWeek11() {
+            var WEEK11_COL = 10; // 0-indexed timeline column
+            var BG       = 'rgba(251, 191, 36, 0.12)';
+            var BORDER_L = '2px solid rgba(251, 191, 36, 0.5)';
+            var BORDER_R = '1px solid rgba(251, 191, 36, 0.5)';
 
-            const zoneNames = {
-                green: 'We can control',
-                amber: 'Where there is tension',
-                red:   'Hard to control'
-            };
-            const zoneColors = {
-                green: '#059669',
-                amber: '#d97706',
-                red:   '#dc2626'
-            };
-
-            function updateCounts() {
-                ['green', 'amber', 'red'].forEach(z => {
-                    const el = document.getElementById('count-' + z);
-                    if (el) el.textContent = document.getElementById('zone-' + z).querySelectorAll('.f-card').length;
-                });
+            // Add left/right borders to the Week 11 header (index 14: 4 fixed + 10 timeline)
+            var allHeaders = document.querySelectorAll('.week-header');
+            if (allHeaders[14]) {
+                allHeaders[14].style.borderLeft  = BORDER_L;
+                allHeaders[14].style.borderRight = BORDER_R;
             }
 
-            function showToast(msg, color) {
-                const t = document.getElementById('findings-toast');
-                if (!t) return;
-                t.textContent = msg;
-                t.style.borderLeft = '4px solid ' + color;
-                t.classList.add('show');
-                clearTimeout(t._timer);
-                t._timer = setTimeout(() => t.classList.remove('show'), 2200);
-            }
-
-            function initCards() {
-                document.querySelectorAll('.f-zone .f-card').forEach(card => {
-                    card.addEventListener('dragstart', onDragStart);
-                    card.addEventListener('dragend',   onDragEnd);
-                });
-            }
-
-            function onDragStart(e) {
-                draggedCard = e.currentTarget;
-                sourceZone  = draggedCard.closest('.f-zone') ? draggedCard.closest('.f-zone').dataset.zone : null;
-                setTimeout(() => draggedCard && draggedCard.classList.add('is-dragging'), 10);
-                e.dataTransfer.effectAllowed = 'move';
-            }
-
-            function onDragEnd() {
-                if (draggedCard) draggedCard.classList.remove('is-dragging');
-                document.querySelectorAll('.f-zone').forEach(z => z.classList.remove('drag-over'));
-                draggedCard = null;
-                sourceZone  = null;
-            }
-
-            document.querySelectorAll('.f-zone').forEach(zone => {
-                zone.addEventListener('dragover', e => {
-                    e.preventDefault();
-                    e.dataTransfer.dropEffect = 'move';
-                    if (draggedCard && zone.dataset.zone !== (draggedCard.closest('.f-zone') || {}).dataset.zone) {
-                        document.querySelectorAll('.f-zone').forEach(z => z.classList.remove('drag-over'));
-                        zone.classList.add('drag-over');
+            // Highlight the col-10 timeline cell in every task row
+            document.querySelectorAll('.gantt-chart .task-row').forEach(function(row) {
+                var cells = Array.from(row.querySelectorAll('[class*="timeline-cell"]'));
+                var col = 0;
+                for (var i = 0; i < cells.length; i++) {
+                    var cell = cells[i];
+                    var spanM = cell.className.match(/span-(\d+)/);
+                    var span  = spanM ? parseInt(spanM[1]) : 1;
+                    if (col === WEEK11_COL) {
+                        cell.style.backgroundColor = BG;
+                        cell.style.borderLeft  = BORDER_L;
+                        cell.style.borderRight = BORDER_R;
+                        break;
                     }
-                });
-
-                zone.addEventListener('dragleave', e => {
-                    if (!zone.contains(e.relatedTarget)) zone.classList.remove('drag-over');
-                });
-
-                zone.addEventListener('drop', e => {
-                    e.preventDefault();
-                    zone.classList.remove('drag-over');
-                    if (!draggedCard || zone.dataset.zone === sourceZone) return;
-                    zone.appendChild(draggedCard);
-                    updateCounts();
-                    showToast('Finding moved → ' + zoneNames[zone.dataset.zone], zoneColors[zone.dataset.zone]);
-                });
+                    col += span;
+                }
             });
-
-            initCards();
-            updateCounts();
         })();
     </script>
 </body>
