@@ -702,26 +702,26 @@
         }
 
         .mitigation-list li {
-            padding: 0.3rem 0;
+            padding: 0.05rem 0;
             position: relative;
             font-size: 0.9rem;
             color: #475569;
-            line-height: 1.4;
+            line-height: 1.25;
         }
 
         .mitigation-sub-list {
             list-style: none;
             padding: 0;
-            margin: 0.3rem 0 0 0;
+            margin: 0.1rem 0 0 0;
             padding-left: 1rem;
         }
 
         .mitigation-sub-list li {
-            padding: 0.2rem 0;
+            padding: 0.05rem 0;
             position: relative;
             font-size: 0.9rem;
             color: #475569;
-            line-height: 1.4;
+            line-height: 1.25;
         }
 
         .hidden {
@@ -2799,13 +2799,13 @@
                         <p class="subtitle">Risk Register Dashboard</p>
                     </div>
                     <div class="header-right">
-                        <div class="date-badge">Last Updated: 4 May 2026</div>
+                        <div class="date-badge">Last Updated: 12 May 2026</div>
                     </div>
                 </div>
 
                 <div class="summary-section">
                     <div class="summary-stat">
-                        <div class="summary-stat-value">18</div>
+                        <div class="summary-stat-value">19</div>
                         <div class="summary-stat-label">Total Risks</div>
                     </div>
                     <div class="summary-stat critical-stat">
@@ -2814,72 +2814,90 @@
                     </div>
                 </div>
 
-                                <!-- What is Known / Unknown Section -->
+                                <!-- Top Challenges Summary -->
                 <div style="background: white; border-radius: 14px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);">
-                    <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 18px;">
-                        <div style="background: rgba(251, 146, 60, 0.1); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">💡</div>
-                        <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">Risk Context</h2>
+                    <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 20px;">
+                        <div style="background: rgba(239, 68, 68, 0.1); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">⚠️</div>
+                        <div>
+                            <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">Top Challenges</h2>
+                            <p style="font-size: 0.8rem; color: #64748b; margin: 2px 0 0 0;">Critical risks requiring resolution before or during AO27 delivery</p>
+                        </div>
                     </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                        <!-- What is Known -->
-                        <div>
-                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #10b981;">What is known</div>
-                            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">i)</span>
-                                    <span><strong>Budget & cost resistance:</strong> feedback reflects that responsible alternatives have not been supported due to budgets</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">ii)</span>
-                                    <span><strong>Effort & time constraints:</strong> Circular design requires more resources and time than 'build & bin' approach. Limited bump out timeframe is a hard constraint to find time to disassemble</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">iii)</span>
-                                    <span><strong>Stakeholder alignment gap:</strong> Disconnect between partners, agencies, designers and builders, with few including materials recovery in designs and limited communication of target materials requirements</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">iv)</span>
-                                    <span>Target material recommendations will be optional</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">v)</span>
-                                    <span>There will be resistance to adopt recommnedations which impact builder margins and supply relationships</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #10b981; font-weight: 700; flex-shrink: 0; min-width: 20px;">vi)</span>
-                                    <span>Materials aren't the problem — it's how we treat them</span>
-                                </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+
+                        <!-- R1 Budget -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R1</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">Budget alignment</span>
                             </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">Understand AO27 budget</p>
                         </div>
-                        
-                        <!-- What is Unknown -->
-                        <div>
-                            <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 9px; padding-bottom: 6px; border-bottom: 3px solid #fb923c;">What is unknown</div>
-                            <p style="font-size: 0.85rem; color: #475569; margin-bottom: 10px; line-height: 1.5;">At this outset the adoption approach is not clear.</p>
-                            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
-                                    <span>The best approach - product led vs AO standard (ref breakdown below)</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
-                                    <span>How will agencies/ builders report they have used a material for an evergreen design element and how will it be verified</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
-                                    <span>What is the lifecycle process - how will evergeen assets be procured, reported, tracked, stored</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
-                                    <span>How will TA source segregate for closed-loop materials - relevant if flooring in scope and single use but recovered</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 6px;">
-                                    <span style="color: #fb923c; font-weight: 700; flex-shrink: 0; min-width: 20px;">Q</span>
-                                    <span>The most viable/ feasible/ desirable 3 year incremental plan</span>
-                                </div>
+
+                        <!-- R2 Effort & cost -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R2</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">Effort &amp; cost</span>
                             </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">Circular is not cheaper in year one. Without proof points and incentives, builders and agencies have no reason to absorb the additional effort.</p>
                         </div>
+
+                        <!-- R3 Optionality -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R3</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">Optionality = low adoption</span>
+                            </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">Where materials and methods are optional, adoption will be low. Leadership support and an incremental mandate are essential to shift this.</p>
+                        </div>
+
+                        <!-- R9 Enforcement -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R9</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">Enforcement gap</span>
+                            </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">RFP circular clauses don't automatically flow into contracts and delivery. Without owners, sign-off milestones and scorecards, requirements won't hold.</p>
+                        </div>
+
+                        <!-- R15 Supply chain -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R15</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">Supply chain pressure</span>
+                            </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">Geopolitical environment is delivering supply chain shocks.</p>
+                        </div>
+
+                        <!-- R16 Asset tracking -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R16</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">No asset tracking</span>
+                            </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">Absent tracking systems mean fragmented tools and manual workarounds. Systems are critical to the circular practice integration.</p>
+                        </div>
+
+                        <!-- R18 PM capacity -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R18</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">PM capacity</span>
+                            </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">Additional reporting and tracking requirements land on PMs without workload relief. Risks adoption friction and circular requirements being deprioritised.</p>
+                        </div>
+
+                        <!-- R19 Data credibility -->
+                        <div style="border: 1px solid #fecaca; border-radius: 10px; padding: 14px 16px; border-left: 4px solid #ef4444;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 4px;">R19</span>
+                                <span style="font-weight: 700; font-size: 0.875rem; color: #0f172a;">Data credibility</span>
+                            </div>
+                            <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.4;">Be clear on measures of success and how these measurable indicators will be reported - this is a gap.</p>
+                        </div>
+
                     </div>
                 </div>
 
@@ -3187,51 +3205,51 @@
         const risks = [
             {
                         "id": 1,
-                        "description": "Budget: Partners/agencies/TA did not have budget approval for  circular materials/practices in AO26",
+                        "description": "Budget: Partners/agencies/TA  budget for AO27 circular materials/practices",
                         "raised_by": "Agencies/ Builders",
-                        "impact_description": "Year-one targets set without internal budget alignment\nThe business hasn't yet agreed what cost uplift it will tolerate in year one. If the RFP goes out with circular design expectations before finance and the executive are brought along, there's a real risk that responses come back and TA can't action them.",
+                        "impact_description": "The business hasn't agreed what cost uplift it will support in year one. If the RFP goes out with circular design expectations before finance and the executive are brought along, there's a real risk that responses come back and TA can't action them.",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "1.1 Apply a very targeted  high-ROSI materials approach:\ni) specific applications e.g. facades\nii) specific materials e.g. support multi year ROI\niii) specific precincts  - align with Peter incremental approach\\n1.2 Align with Long term design - establish which elements will be part of the annual vs evergreen scope.\nThis includes TA Infrastructure - PK (First aid/ toilets/ retail)\\n1.3 Precinct RFP needs the primary mechanism - procurement policy & contracts to enable adoption. It is the enabler for compliance",
+                        "mitigation_strategies": "1.1 80/20 materials approach across TA build & precincts:\ni) specific applications e.g. facades\nii) specific materials e.g. support multi year ROI\niii) specific precincts - align with Long term design - establish which elements will be part of the annual vs evergreen scope.\n1.2 Precinct RFP is the primary mechanism - procurement policy & contracts to enable adoption.",
                         "viability": "Ref what is unknown\\nRequire direction from Peter evergreen elements & PK\\nNeed to understand the extent of the recommendation vs requirement in the precinct RFP"
             },
             {
                         "id": 2,
-                        "description": "Effort & cost: Circular design/reuse not easier/cheaper than annual 'build & bin'",
+                        "description": "Effort & cost: Circular design/reuse is not easier/cheaper than annual 'build & bin'",
                         "raised_by": "Builders & contractors",
-                        "impact_description": "Qualitative feedback from AO25/ AO26 raised the lack of incentives fund resourcing and skills to adopt circular practices",
+                        "impact_description": "Circular design requires additional planning, DfD design time, disassembly labour and storage coordination at bump-out — without reducing existing workload. Agencies bear the effort cost while budget control sits with TA. AO25/AO26 feedback confirmed that without direct incentives, neither agencies nor builders will absorb these costs. Financial system limitations mean savings cannot be tracked to build the business case.",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "This is true for some applications and not others.\nEvaluate the evergreen structural and surface systems that are most viable and model ROSI\\nProvide proof points\ni) AO Reserve living use case\nii) JTDodd wall track system at F1\niii) Run 3-5 feasibility studies to track costs. With financial systems limitations tracking will be manual",
+                        "mitigation_strategies": "Evaluate the evergreen structural and surface systems that are most viable and model ROSI. With financial systems limitations tracking will be manual\nProvide proof points\ni) AO Reserve living use case\nii) JTDodd wall track system at F1",
                         "viability": "High level assessment is possible in the project, feasibility will need to be tested over a period of time\\nPart of business case modelling"
             },
             {
                         "id": 3,
-                        "description": "Optional target materials and methods is unlikely to drive adoption",
+                        "description": "Target materials and methods optionality is unlikely to drive adoption",
                         "raised_by": "Marlon (material expert)",
-                        "impact_description": "Where materials are optional and not required, adoption by designers/ agencies/ builders is expected to be low",
+                        "impact_description": "Where materials & methods are optional and not required, adoption by designers/ agencies/ builders is expected to be low",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "i) In AO27 - seek adoption not just with Precincts but also TA delivery\nii) Micro approach: Zone in on GSO and ball park as focus for success\nNote: should the incremental plan shift to mandatory requirements systems, process and people would be needed to support it",
+                        "mitigation_strategies": "i) Seek Leadership support\nii) Incremental plan over 3 years",
                         "viability": ""
             },
             {
                         "id": 4,
-                        "description": "Bump-out time doubles for disassembly/reuse/storage",
+                        "description": "Guide design/build about best suited evergreen structural elements for reuse & recovery.",
                         "raised_by": "Builders & contractors",
                         "impact_description": "Disrupts event schedule & contractor ops, blocks reuse at scale",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "Be highly selective around what evergreen structural elements are fit for purpose for:\ni) reuse or \nii) recovery\niii) Test time increase vs labour tradeoff w/ builders/TA",
+                        "mitigation_strategies": "Test time increase vs labour tradeoff w/ builders/TA\nIncremental plan supports testing time constraint",
                         "viability": "Related to 1.1\nConsultaion with a range of builders & TA"
             },
             {
                         "id": 5,
-                        "description": "Disconnect: Partners/ agencies/ designers don't embed circular reqs for builders",
+                        "description": "Disconnect: Partners/ agencies/ designers have not communicated circular reqs for builders",
                         "raised_by": "Agencies/ Builders/ TA fire safety",
                         "impact_description": "Builders can't deliver circular outcomes; recovery targets missed",
                         "impact_level": 5,
@@ -3242,138 +3260,127 @@
             },
             {
                         "id": 6,
-                        "description": "Partners/ agencies/ builders  prefer to use mixed construction waste bins on site because they  are 'free'",
+                        "description": "TA paid waste services create no reason for partners/ agencies/ builders to manage own their waste or storage",
                         "raised_by": "Agencies/ Builders",
                         "impact_description": "While waste services are free to use, there is no reason for partners/ agencies/ builders to pay additional service and storage fees to manage own their waste",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "Consider:\ni) Waste management plans from partners/ agencies in collab with builders\nii) Distribute waste costs according to plans\niii) Model what the distribution of costs would be across partners/ agencies",
+                        "mitigation_strategies": "i) Waste management within materials management plan from partners/ agencies in collab with builders\nii) TA to distribute waste costs according to plans/ volume",
                         "viability": "Very viable if supported by TA systems"
             },
             {
                         "id": 7,
                         "description": "Weather/traffic-degraded materials can't be reused",
                         "raised_by": "Builders & contractors",
-                        "impact_description": "Flooring and low cost hoardings which are finished/ adhesed to other materials are not good reuse candidates",
-                        "impact_level": 5,
+                        "impact_description": "Flooring and low cost hoardings which are bonded to other materials are not good reuse candidates",
+                        "impact_level": 3,
                         "probability_level": 5,
-                        "priority_level": 25,
-                        "mitigation_strategies": "Be highly selective around what structural elements are fit for purpose for:\ni) reuse or \nii) recovery\niii) consider if flooring should be in scope",
+                        "priority_level": 15,
+                        "mitigation_strategies": "Be highly selective around what structural elements are fit for purpose for reuse or recovery.\nExplore carpet take-back programs",
                         "viability": "Related to 1.1"
             },
             {
                         "id": 8,
-                        "description": "Materials aren't the problem — it's how we treat them\nMost current materials are fit for purpose. Finishes, adhesives and poor bump-out handling are what make them unrecoverable.",
+                        "description": "Materials aren't the problem - it's how we treat them\nMost current materials are fit for purpose. Finishes, adhesives and poor bump-out handling are what make them unrecoverable.",
                         "raised_by": "TA",
-                        "impact_description": "There are complexities in mandating use of certain materials and being able to:\n- builders considering waste upfront and DfD\n- incorporate into the site waste management planning source segregation",
+                        "impact_description": "Education is required to support new materials methods and source segregation",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "i) Put a focus on designing waste out with designers and DfD methods with builders\nii) Review the AO26 timber source segregation learnings",
+                        "mitigation_strategies": "Focus on education around designing waste out with designers and DfD methods with builders",
                         "viability": ""
             },
             {
                         "id": 9,
-                        "description": "Measuring compliance of target materials will depend on how they are supported (adopted) and reported by agencies/ builders",
+                        "description": "Enforcement and accountability: circular requirements need embedding across RFP, contracts, and delivery stages",
                         "raised_by": "TA",
-                        "impact_description": "Requires planning and inclusion in both RFP and for TA PMs",
+                        "impact_description": "Circular requirements embedded in RFPs need to carry through into contract deliverables, design approval and delivery stages. Without this, inconsistent adoption and reversion to traditional materials and methods.",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "TA fire/ safety existing process could be leveraged, this will require review and input from TA\nIt will also require TA resourcing to support",
+                        "mitigation_strategies": "Now: Establish owners and processes for year 1 of the incremental plan\nTA fire/ safety existing process is a good leverage, and will also require TA leadership resourcing to support\nCreate a simple compliance scorecard for PMs and agencies\nFuture: Tie compliance to sign-off and payment milestones",
                         "viability": "Needs review with TA Fire/ safety"
             },
             {
                         "id": 10,
                         "description": "Product led vs AO standard.\nA product-led approach relies on individual product verification rather than a consistent, enforceable standard.",
                         "raised_by": "All",
-                        "impact_description": "The product-led approach is fit-for-purpose for transition and evidence-building, but weak as a permanent control mechanism. \nThe risk long term is dependency on a fixed shortlist rather than embedding capability in the system. Circularity is dependent on a curated product list, rather than becoming an embedded, enforceable procurement standard that the market delivers independently.",
+                        "impact_description": "The product-led approach is fit-for-purpose for transition and evidence-building, but weak as a permanent control mechanism. \nThe risk long term is dependency on a fixed shortlist rather than embedding capability in the system and enforceable procurement standard that the market delivers independently.",
                         "impact_level": 4,
                         "probability_level": 4,
                         "priority_level": 16,
-                        "mitigation_strategies": "Frame this year as a structured feasibility phase to identify which products and suppliers can reliably meet a future mandated AO standard. \nMicro approach: Zone in on GSO and ball park as focus for success \nConsider in the incremental plan definition of AO standard using market (builder & TA fire safety feedback) AO27+",
+                        "mitigation_strategies": "Frame AO27 as a structured feasibility phase to identify which products and suppliers can reliably meet a future mandated AO standard.\nFuture: the incremental plan definition of an AO standard using market (builder & TA fire safety feedback) AO27+",
                         "viability": "Review with Matt/ Andrea"
             },
             {
                         "id": 11,
-                        "description": "Communication of the shift in target materials and any reporting is essential for progress of the circular program across. \ni) Precinct RFP\nii) Secondary audience",
+                        "description": "Communication of requirements is essential for progress of the circular program across all audiences",
                         "raised_by": "TA/ Agencies/ Builders/ TA fire safety",
-                        "impact_description": "How this next stage is communicated is key\ni) The primary audience: precinct agencies, designers, builders - via RFPin this first year will be guidance - this risks adoption\nii) Consider year 2 & 3 for precincts\niii) Consider comms implications as well as partners (agencies, designers, builders)",
+                        "impact_description": "There is no TA comms lead or channels making education and training limited",
                         "impact_level": 5,
                         "probability_level": 5,
                         "priority_level": 25,
-                        "mitigation_strategies": "i) Communication primary focus: Precinct designers, Agencies and builders\nSecondary: partner activations/ agencies & designers / builders\n* Content, briefing sessions and support TBC\\nii) Update the CDG and RML and distribute broadly\nAnd update the reporting reqs - for Precinct Agencies, designers and builders it is request to use materials and if not specify why as well as provide waste management plan",
+                        "mitigation_strategies": "Primary audience: Precinct designers, Agencies and builders, TA teams\nSecondary: partner activations/ agencies & designers / builders\nMake CDG and RML dynamic",
                         "viability": "TBC scope\\nCircular program"
             },
             {
                         "id": 12,
-                        "description": "Materials friction. Two issues here:\ni) embedded supply relationships\nii) with Labour rates mostly fixed    Materials supply is where contractors make margin",
+                        "description": "Commercial misalignment with delivery partners",
                         "raised_by": "TA vs Builders",
-                        "impact_description": "Any change to Contractors sourcing their own materials is impact to their supply and profit model and will likely receive resistance",
+                        "impact_description": "Circular design can reduce short-term agency margin or increase delivery effort, while budget control remains with TA. This may lead to passive resistance or minimal compliance.",
                         "impact_level": 4,
                         "probability_level": 4,
                         "priority_level": 16,
-                        "mitigation_strategies": "Discuss with Procurement 'open book' supply - limit to key materials",
+                        "mitigation_strategies": "Now: Introduce preferred suppliers\nCommunicate current state materials methods\nDemonstrate reuse-driven cost savings across event cycles\nFuture: Build circular requirements into commercial terms early\nCreate shared incentives tied to reuse and recovery outcomes",
                         "viability": "Sam"
             },
             {
                         "id": 13,
-                        "description": "To deliver high res graphics on facades/ cladding many agencies develop composite structures - ACP/ ACM stuck to structural ply - both end up in waste, there are few market alternatives",
+                        "description": "To deliver high res graphics on facades/ cladding many agencies develop composite structures - ACP/ ACM bonded to structural ply - both end up in waste",
                         "raised_by": "TA/ Agencies/ Builders/ TA fire safety",
-                        "impact_description": "Without viable responsible alternatives, one of the biggest venue overaly category - surface systems will have limited circular options",
+                        "impact_description": "Facades face a substitute challenge lacking viable responsible alternatives",
                         "impact_level": 4,
                         "probability_level": 4,
                         "priority_level": 16,
-                        "mitigation_strategies": "Understand further from Precinct design & delivery and agencies the evergreen elements (such as Textrik fabrics) and those that require high res structural assets",
+                        "mitigation_strategies": "Promote with precinct agencies fabrics and ACM recovery partner",
                         "viability": "Peter, Vange, TES"
             },
             {
                         "id": 14,
                         "description": "Optimal material/application mix requires a continuous feasibility study",
                         "raised_by": "All",
-                        "impact_description": "This requires upfront acknowledgement and buy-in from TA management, design and exec",
-                        "impact_level": 5,
+                        "impact_description": "Design and build ecosystem required to support continuous improvement",
+                        "impact_level": 3,
                         "probability_level": 5,
-                        "priority_level": 25,
-                        "mitigation_strategies": "Set Phase III measures of success\nBe clear on the expectations up front",
+                        "priority_level": 15,
+                        "mitigation_strategies": "Set up mechanism for feedback",
                         "viability": "Sponsor together with key teams"
             },
             {
                         "id": 15,
-                        "description": "Transparency of outcomes without systems",
-                        "raised_by": "All",
-                        "impact_description": "Cannot credibly report circular performance or data-drive decisions",
-                        "impact_level": 5,
-                        "probability_level": 3,
-                        "priority_level": 15,
-                        "mitigation_strategies": "Dependent on  measures of success and 1.1 Program approach - establish what needs to be measured, by who and how",
-                        "viability": "Delivery: Collab with various TA teams"
-            },
-            {
-                        "id": 16,
                         "description": "Responsible material supply is dependant on seasonality and sensitive to supply chain shocks",
                         "raised_by": "All",
-                        "impact_description": "Supply scale and lead times need to be known before encouraging the ecosystem to use the responsible materials",
-                        "impact_level": 4,
-                        "probability_level": 4,
-                        "priority_level": 16,
-                        "mitigation_strategies": "Related to 1.1 + procurement agreements verify scale/availability/performance",
+                        "impact_description": "Materials pricing is increasing 10-20% this year as a result of the geopolitical environment",
+                        "impact_level": 5,
+                        "probability_level": 5,
+                        "priority_level": 25,
+                        "mitigation_strategies": "The commercial value of circular design can be demonstrated via ROSI",
                         "viability": "Procurment terms"
             },
             {
-                        "id": 17,
-                        "description": "No TA asset tracking system",
+                        "id": 16,
+                        "description": "Digital systems and asset tracking dependency",
                         "raised_by": "All",
-                        "impact_description": "Cannot monitor material lifecycles or prove circular ROI",
+                        "impact_description": "Asset tracking systems are absent, leading to fragmented tools, manual workarounds and inconsistent visibility.",
                         "impact_level": 3,
                         "probability_level": 5,
                         "priority_level": 15,
-                        "mitigation_strategies": "Share experiment findings to TA IT to explore possibility of using Field Services return work orders",
+                        "mitigation_strategies": "Now: Use interim low-tech asset tracking methods initially\nDefine a minimum viable tracking process before digitisation\nFuture: Consider TA IT Field Services reverse work order or other digital solutions\nEnsure future systems align with operational workflows, not vice versa",
                         "viability": "IT scope"
             },
             {
-                        "id": 18,
+                        "id": 17,
                         "description": "Warehouse capacity hits a ceiling before the RFP commits to storage-heavy designs",
                         "raised_by": "TA team",
                         "impact_description": "The Altona warehouse is at its limits. Two circular builds this year caused contention over storage. If agencies respond with ambitious flat-pack modular designs and TA can't house them, it either forces a backtrack (damaging trust with agencies) or creates unexpected cost blowouts.",
@@ -3381,6 +3388,28 @@
                         "probability_level": 5,
                         "priority_level": 15,
                         "mitigation_strategies": "The capacity question won't be resolved before the RFP goes out - consider how to mitigate",
+                        "viability": ""
+            },
+            {
+                        "id": 18,
+                        "description": "PM capacity and operational burden",
+                        "raised_by": "TA",
+                        "impact_description": "Additional planning, tracking and reporting requirements are added without reducing existing workload, creating pressure and adoption friction.",
+                        "impact_level": 5,
+                        "probability_level": 5,
+                        "priority_level": 25,
+                        "mitigation_strategies": "Now: Support from TA leadership\nSimplify tools and reporting templates\nIntroduce phased requirements rather than full compliance immediately\nProvide central support resources during early implementation\nFuture: Standardise reusable workflows and schedules",
+                        "viability": ""
+            },
+            {
+                        "id": 19,
+                        "description": "Data quality and credibility risk",
+                        "raised_by": "All",
+                        "impact_description": "Early-stage tracking systems and inconsistent inputs reduce confidence in reporting and weaken the ROSI/business case.",
+                        "impact_level": 5,
+                        "probability_level": 5,
+                        "priority_level": 25,
+                        "mitigation_strategies": "Now: Be clear on measures of success and how these measurable indicators will be reported - this is a gap\nStandardise data collection methods and ownership with materials management\nPrioritise operationally useful metrics over perfect data\nValidate pilot data before scaling reporting claims",
                         "viability": ""
             }
 ];
@@ -3450,7 +3479,7 @@
                         <td class="risk-level-cell">
                             <div class="risk-level-badge ${levelClass}">${risk.priority_level}</div>
                         </td>
-                        <td style="font-size: 0.9rem; color: #475569;">${mitigationsHTML}</td>
+                        <td style="font-size: 0.9rem; color: #475569; text-align: left;">${mitigationsHTML}</td>
                     </tr>
                 `;
             }).join('');
@@ -3487,7 +3516,7 @@
         // Initialize risks table
         renderRisks();
 
-        // ── Week 12 / 4-May "now" marker ────────────────────────────────────
+        // ── Week 11 / 27-Apr "now" marker ────────────────────────────────────
         (function() {
             var SHADOW = 'inset 3px 0 0 0 #fb923c';
             document.querySelectorAll('.gantt-chart .task-row').forEach(function(row) {
@@ -3496,8 +3525,8 @@
                 for (var i = 0; i < cells.length; i++) {
                     var spanM = cells[i].className.match(/span-(\d+)/);
                     var span = spanM ? parseInt(spanM[1]) : 1;
-                    if (col === 12) { cells[i].style.boxShadow = SHADOW; break; }
-                    if (col > 12) break;
+                    if (col === 11) { cells[i].style.boxShadow = SHADOW; break; }
+                    if (col > 11) break;
                     col += span;
                 }
             });
@@ -3861,7 +3890,7 @@
                         <div class="mos-measure">AO Material Standard formalised: certified, recyclable, E0/E1, water-based requirements</div>
                         <div class="mos-measure">Aligned with IOC Olympic standards</div>
                         <div class="mos-measure">Activity-based Scope 3 carbon accounting for site preparation established</div>
-                        <span class="mos-tag mos-tag-risk">Risk 16 · Supply reliability</span>
+                        <span class="mos-tag mos-tag-risk">Risk 15 · Supply reliability</span>
                     </div>
 
                     <div class="mos-cell">
@@ -3877,8 +3906,7 @@
                         <div class="mos-measure">Mandatory circular requirements enforced via contract — not guidance</div>
                         <div class="mos-measure">3-year supply contracts with preferred suppliers evidencing scale and preferred pricing</div>
                         <div class="mos-measure">Compliance reporting semi-automated — not reliant on manual tracking</div>
-                        <span class="mos-tag mos-tag-risk">Risk 15 · Reporting systems</span>
-                        <span class="mos-tag mos-tag-risk">Risk 17 · No asset tracking</span>
+                        <span class="mos-tag mos-tag-risk">Risk 16 · No asset tracking</span>
                     </div>
 
                     <div class="mos-cell">
